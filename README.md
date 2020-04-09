@@ -17,4 +17,4 @@ The website is designed to process and display the HAW users usage of total clus
 2. Run 'npm install' in './app_uni' folder.
 
 ## Update
-Run 'update.sh' or set a scheduled cron job 'cronJob.sh'
+Run 'bwUniCluster*/main_sh/update.sh' or set a scheduled cron job 'bwUniCluster*/main_sh/cronJob.sh'
