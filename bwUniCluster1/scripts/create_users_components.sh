@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-appFolder="${MD}/../bwUniCluster1/src/app/users"
+appFolder="${MD}/../src/app/users"
 dataFolder="${MD}/ngData/users"
 
 generate () {

@@ -23,7 +23,7 @@
     "sync": "chmod g=u public -R && rsync -uavrh public/ asaramet@comserver.hs-esslingen.de:/www/faculty/it/bwHPC/_ssl/all/ --delete-excluded",
     "save": "test -d public || test -d ./prod_work || rm ./prod_work -rf;  mv public prod_work || echo 'compile first!!!'",
     "watch": "ng serve --aot --watch",
-    "update": "../update.sh && npm run compile",
+    "update": "main_sh/update.sh && npm run compile",
     "rsync": "npm run sync && npm run save"
   },
   "author": "Alexandru Saramet",

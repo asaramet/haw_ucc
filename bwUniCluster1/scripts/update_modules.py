@@ -3,6 +3,7 @@ import os, sys, getopt
 from string import Template
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
+app_path = os.path.join(dir_path, "../src/app")
 
 def html(year, start=1, end=12):
   text = '''
@@ -99,7 +100,7 @@ const routes: Routes = [
 export class Year${year}RouterModule {}''').substitute(year=year)
 
 def createFiles(year=2019, start=1, end=12):
-  outputFolder = os.path.join(dir_path, "../bwUniCluster1/src/app/" + str(year))
+  outputFolder = os.path.join(app_path, str(year))
   htmlFile = os.path.join(outputFolder, str(year) + '.component.html')
   moduleFile = os.path.join(outputFolder, str(year) + '.module.ts')
   compFile = os.path.join(outputFolder, str(year) + '.component.ts')

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-appFolder="${MD}/../bwUniCluster1/src/app"
+appFolder="${MD}/../src/app"
 
 declare -i year=2017
 [[ ! -z ${1} ]] && declare -i year=${1}

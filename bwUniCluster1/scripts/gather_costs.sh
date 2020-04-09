@@ -4,7 +4,7 @@ MD=`dirname $(readlink -f $0)`
 inputFolder="/www/faculty/it/bwHPC/SCRIPTS/haw"
 outputFolder="${inputFolder}/../output"
 ngDataFolder="${MD}/ngData/_data"
-appFolder="${MD}/../bwUniCluster1/src/app/_data"
+appFolder="${MD}/../src/app/_data"
 
 prefixes='aa as es hf hk hn hr hs ht hu ro'
 

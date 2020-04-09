@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
+MD="${MD}/.."
 S_DIR=${MD}/scripts
-A_DIR=${MD}/bwUniCluster1/src/app
+A_DIR=${MD}/src/app
 OUTPUT_DIR="/www/faculty/it/bwHPC/SCRIPTS/output"
 
 CURRENT_MONTH=`date +%m`

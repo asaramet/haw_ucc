@@ -50,7 +50,7 @@ def createTotalTS(dataFile, outputFile):
 
 def main (argv):
   dataFile = "/www/faculty/it/bwHPC/SCRIPTS/statistics/uc1_knotenauslastung_standorte.csv"
-  outputFile = os.path.join(dir_path, "../total.ts")
+  outputFile = os.path.join(dir_path, "../../total.ts")
   try:
     opts, args = getopt.getopt(argv, "o:i:")
   except getopt.GetoptError:

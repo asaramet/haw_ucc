@@ -2,7 +2,7 @@
 
 MD=`dirname $(readlink -f $0)`
 dataFolder="${MD}/ngData/_data"
-appFolder="${MD}/../bwUniCluster1/src/app/_data"
+appFolder="${MD}/../src/app/_data"
 
 declare -i processedYear=2017
 [[ ! -z ${2} ]] && declare -i processedYear=${2}

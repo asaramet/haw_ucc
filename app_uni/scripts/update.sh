@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
+NG_DATA=${MD}/../../bwUniCluster1/scripts/ngData
 #prefixes='aa hu'
 prefixes='aa as hf hk hn hr hs ht hu ro'
 validPrefixes='aa as hf hk hn hr hs ht hu ro'
@@ -14,7 +15,6 @@ make () {
 clean () {
   echo "Clean all!"
   npm run clean:all
-  NG_DATA=${MD}/../../scripts/ngData
   [[ -d ${NG_DATA} ]] && rm -rf ${NG_DATA}
 }
 

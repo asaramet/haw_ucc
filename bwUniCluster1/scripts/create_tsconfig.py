@@ -4,7 +4,7 @@ import os, sys, getopt
 from string import Template
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-app_path = os.path.join(dir_path, '../bwUniCluster1')
+app_path = os.path.join(dir_path, '..')
 startWith = 2017
 
 def tsconfig(year):

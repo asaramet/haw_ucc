@@ -8,7 +8,7 @@ declare -i fromMonth=1
 [[ ! -z ${3} ]] && declare -i upToMonth=${3}
 
 MD=`dirname $(readlink -f $0)`
-appFolder="${MD}/../bwUniCluster1/src/app/${year}"
+appFolder="${MD}/../src/app/${year}"
 dataFolder="${MD}/ngData/${year}"
 
 generate () {

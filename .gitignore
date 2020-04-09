@@ -5,9 +5,9 @@ bak/
 data/
 clean_angular/
 commands
-scripts/ngData/
-scripts/log.update
-scripts/single_es_out.log
+bwUniCluster*/scripts/ngData/
+bwUniCluster*/scripts/log.update
+bwUniCluster*/scripts/single_es_out.log
 
 # Angular files
 # See http://help.github.com/ignore-files/ for more about ignoring files.
