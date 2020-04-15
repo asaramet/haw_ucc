@@ -20,8 +20,8 @@ Usage reported in CPU Minutes
       uc2             haw                             71449209        0
       uc2             haw es_asara+ asaramet@hs-es+      67972        0
 
-$ sacct -a -A haw -X -o Group,User%20,cputimeraw,ExitCode,State,JobID,Start,End,ncpus,partition%12 -S 2020-03-17T00:00:00 -E 2020-03-18T00:00:00
-    Group                 User CPUTimeRAW ExitCode      State        JobID               Start                 End      NCPUS    Partition 
+$ sacct -a -A haw -X -o Group,User%20,cputimeraw,ExitCode,State,JobID,Start,End,ncpus,partition%12 -S 2020-03-17 -E 2020-03-18
+    Group                 User CPUTimeRAW ExitCode      State        JobID               Start                 End      NCPUS    Partition
 --------- -------------------- ---------- -------- ---------- ------------ ------------------- ------------------- ---------- ------------
     ro_ro              ro_bold       7040    101:0     FAILED 18104868     2020-03-17T13:22:08 2020-03-17T13:22:30        320     multiple
     ro_ro              ro_bold    5853120      0:0  COMPLETED 18104886     2020-03-17T13:42:23 2020-03-17T18:47:14        320     multiple
