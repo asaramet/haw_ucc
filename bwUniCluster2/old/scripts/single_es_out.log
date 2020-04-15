@@ -1,0 +1,49 @@
+grep "User=es_*" ../feedback/2018/* | tee es.log
+
+one line:
+
+../feedback/2018/20180611.log:TotalRequestedProcs=672;Unicore=0;AverageUtilizedProcs=1.75;EffQueueTime=28.0;Account=haw;GLOBALQUEUE=1;SubmitTime=1528722217;TaskCount=672;DstRMJID=15409286;JobId=15409286;Executable=/opt/moab/spool/moab.job.vUMDTV;TotalRequestedNodes=24;TotalRequestedTasks=672;StartPriority=20386;IWD=/pfs/data2/home/es/es_es/es_roesler/strip_fin_300;AllocatedNodes=[uc1n636:8][uc1n640:8][uc1n667:8][uc1n733:8][uc1n734:8][uc1n809:8][uc1n816:8][uc1n817:8][uc1n818:8][uc1n823:8][uc1n826:8][uc1n831:8][uc1n832:8][uc1n833:8][uc1n836:8][uc1n851:8][uc1n853:8][uc1n911:8][uc1n913:8][uc1n917:8][uc1n922:8][uc1n926:8][uc1n941:8][uc1n947:8];TotalCost=3234525.44;DstRM=uc1  ;NodeMatchPolicy=EXACTNODE;Group=es_es;TimeQueuedTotal=1693;PE=705.92;BypassCount=43;Class=;NodeAccess=SINGLEJOB;MemPerTask=5000;User=es_roesler;ReqWallTime=86400;SystemJID=15409286;SubmitDir=/pfs/data2/home/es/es_es/es_roesler/strip_fin_300;AName=starccm_stripfin_1;StartTime=1528723910;Mail=stefan.roesler@hs-esslingen.de;StartCount=1;TemplateSets=DEFAULT;SystemID=uc1;UMask=0022 ;UsedWallTime=4582;TotalRequestedMemory=3360000;Partition=uc1;EndTime=1528728492;ProcPerTask=1;
+
+
+TotalRequestedProcs=672;
+Unicore=0;
+AverageUtilizedProcs=1.75;
+EffQueueTime=28.0;
+Account=haw;
+GLOBALQUEUE=1;
+SubmitTime=1528722217;
+TaskCount=672;
+DstRMJID=15409286;
+JobId=15409286;
+Executable=/opt/moab/spool/moab.job.vUMDTV;
+TotalRequestedNodes=24;
+TotalRequestedTasks=672;
+StartPriority=20386;
+IWD=/pfs/data2/home/es/es_es/es_roesler/strip_fin_300;
+AllocatedNodes=[uc1n636:8][uc1n640:8][uc1n667:8][uc1n733:8][uc1n734:8][uc1n809:8][uc1n816:8][uc1n817:8][uc1n818:8][uc1n823:8][uc1n826:8][uc1n831:8][uc1n832:8][uc1n833:8][uc1n836:8][uc1n851:8][uc1n853:8][uc1n911:8][uc1n913:8][uc1n917:8][uc1n922:8][uc1n926:8][uc1n941:8][uc1n947:8];
+TotalCost=3234525.44;
+DstRM=uc1  ;
+NodeMatchPolicy=EXACTNODE;
+Group=es_es;
+TimeQueuedTotal=1693;
+PE=705.92;
+BypassCount=43;
+Class=;
+NodeAccess=SINGLEJOB;
+MemPerTask=5000;
+User=es_roesler;
+ReqWallTime=86400;
+SystemJID=15409286;
+SubmitDir=/pfs/data2/home/es/es_es/es_roesler/strip_fin_300;
+AName=starccm_stripfin_1;
+StartTime=1528723910;
+Mail=stefan.roesler@hs-esslingen.de;
+StartCount=1;
+TemplateSets=DEFAULT;
+SystemID=uc1;
+UMask=0022 ;
+UsedWallTime=4582;
+TotalRequestedMemory=3360000;
+Partition=uc1;
+EndTime=1528728492;
+ProcPerTask=1;

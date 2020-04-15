@@ -1,0 +1,46 @@
+[
+  {
+    "name":"Hochschule Aalen – Technik und Wirtschaft",
+    "abbr":"aa"
+  },
+  {
+    "name":"Hochschule Albstadt-Sigmaringen",
+    "abbr":"as"
+  },
+  {
+    "name":"Hochschule Esslingen",
+    "abbr":"es"
+  },
+  {
+    "name":"Hochschule Furtwangen",
+    "abbr":"hf"
+  },
+  {
+    "name":"Hochschule Karlsruhe – Technik und Wirtschaft",
+    "abbr":"hk"
+  },
+  {
+    "name":"Hochschule Heilbronn",
+    "abbr":"hn"
+  },
+  {
+    "name":"Hochschule Reutlingen",
+    "abbr":"hr"
+  },
+  {
+    "name":"Hochschule für Technik Stuttgart",
+    "abbr":"hs"
+  },
+  {
+    "name":"HTWG Konstanz",
+    "abbr":"ht"
+  },
+  {
+    "name":"Hochschule Ulm",
+    "abbr":"hu"
+  },
+  {
+    "name":"Hochschule für Forstwirtschaft Rottenburg",
+    "abbr":"ro"
+  }
+]
