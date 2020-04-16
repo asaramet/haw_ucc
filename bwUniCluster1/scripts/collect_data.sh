@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 MD=`dirname $(readlink -f $0)`
-dataFolder="/www/faculty/it/bwHPC/SCRIPTS"
+dataFolder="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1"
 prefixes='aa as es hf hk hn hr hs ht hu ro'
 bwUniCluster_username="es_asaramet"
 

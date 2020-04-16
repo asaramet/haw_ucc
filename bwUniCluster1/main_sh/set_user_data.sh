@@ -10,7 +10,7 @@ OLD_COMMSERVER_FOLDER='/www/faculty/it/bwHPC/_ssl'
 
 OLD_UNICLUSTER_ID="es_asaramet"
 OLD_UNICLUSTER_HOSTNAME="bwunicluster.scc.kit.edu"
-OLD_DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS"
+OLD_DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1"
 
 # new
 NEW_COMMSERVER_ID='asaramet'
@@ -19,7 +19,7 @@ NEW_COMMSERVER_FOLDER='/www/faculty/it/bwHPC/_ssl'
 
 NEW_UNICLUSTER_ID="es_asaramet"
 NEW_UNICLUSTER_HOSTNAME="bwunicluster.scc.kit.edu"
-NEW_DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS"
+NEW_DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1"
 
 # changes
 sed -i s:${OLD_COMMSERVER_ID}:${NEW_COMMSERVER_ID}:g ${MD}/package.json

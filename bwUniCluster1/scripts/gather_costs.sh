@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-inputFolder="/www/faculty/it/bwHPC/SCRIPTS/haw"
+inputFolder="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/haw"
 outputFolder="${inputFolder}/../output"
 ngDataFolder="${MD}/ngData/_data"
 appFolder="${MD}/../src/app/_data"

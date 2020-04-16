@@ -49,7 +49,7 @@ def createTotalTS(dataFile, outputFile):
     tsFile.write(tsObject(dataFile, year, date.today().month))
 
 def main (argv):
-  dataFile = "/www/faculty/it/bwHPC/SCRIPTS/statistics/uc1_knotenauslastung_standorte.csv"
+  dataFile = "/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/statistics/uc1_knotenauslastung_standorte.csv"
   outputFile = os.path.join(dir_path, "../../total.ts")
   try:
     opts, args = getopt.getopt(argv, "o:i:")

@@ -4,7 +4,7 @@ MD=`dirname $(readlink -f $0)`
 MD="${MD}/.."
 S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
-OUTPUT_DIR="/www/faculty/it/bwHPC/SCRIPTS/output"
+OUTPUT_DIR="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/output"
 
 CURRENT_MONTH=`date +%m`
 [[ ${CURRENT_MONTH:0:1} -eq 0 ]] && CURRENT_MONTH=${CURRENT_MONTH:1:2}

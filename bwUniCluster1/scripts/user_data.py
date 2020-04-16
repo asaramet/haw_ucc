@@ -3,7 +3,7 @@
 import os, json, sys, getopt
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
-dataFolder = "/www/faculty/it/bwHPC/SCRIPTS/haw"
+dataFolder = "/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/haw"
 outputFolder = os.path.join(dir_path, "ngData/_data")
 
 hawPrefixes = ['aa', 'as', 'es', 'hf', 'hk', 'hn', 'hr', 'hs', 'ht', 'hu', 'ro']
