@@ -9,12 +9,14 @@ DATE_FORMAT='+%Y-%m-%d'
 
 MONTH=`date -d "yesterday" '+%Y-%m'`
 END=`date -d "yesterday" ${DATE_FORMAT}`
-START=`date -d "${MONTH}-01" ${DATE_FORMAT}`
+START="${MONTH}-01"
 OUT_FILE="${MONTH}.log"
 
 collect () {
-  echo "Collecting data for ${MONTH}"
-  echo "sacct -a -A ${ACCOUNT} -X -o ${FIELDS} -S ${START} -E ${END} > ${LOG_FOLDER}/${OUT_FILE}"
+  #echo "Collecting data for ${MONTH}"
+  #echo "sacct -a -A ${ACCOUNT} -X -o ${FIELDS} -S ${START} -E ${END} > ${LOG_FOLDER}/${OUT_FILE}"
+  [[ ! -d ${LOG_FOLDER} ]] && mkdir -p ${LOG_FOLDER}
+  sacct -a -A ${ACCOUNT} -X -o ${FIELDS} -S ${START} -E ${END} > ${LOG_FOLDER}/${OUT_FILE}
 }
 
 collect_range () {
@@ -93,7 +95,7 @@ collect_range () {
 
     START="${MONTH}-01"
     OUT_FILE="${MONTH}.log"
-    collect
+    collect && exit 0
   fi
   echo "NOT yet configured to process multiple years sorry" && exit 0
 }

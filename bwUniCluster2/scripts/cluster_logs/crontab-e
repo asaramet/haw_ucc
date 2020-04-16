@@ -1,0 +1,1 @@
+0 5 * * * /opt/bwhpc/es/dbdata/scripts/sacct_logs.sh
