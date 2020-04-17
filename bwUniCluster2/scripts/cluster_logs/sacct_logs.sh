@@ -106,7 +106,7 @@ help_menu () {
 
   Usage: ${0} [OPTION] [START DATE] [END DATE]
 
-  NOTE: If no OPTIONS are provided the script will collect data for yesterday.
+  NOTE: If no OPTIONS are provided the script will collect data from 1-st of Month to yesterday.
 
   OPTIONS:
     -h | --help         Show this message
@@ -118,7 +118,7 @@ help_menu () {
   END DATE              Date in format YY-MM-DD up to wich the data will be gathered.
 
   EXAMPLES:
-    Gather data for yesterday:
+    Gather data from 1-st on monty till yesterday:
         $ ${0}
 
     Gather data starting with 3-d of April 2020 till 23-d of May 2020:
