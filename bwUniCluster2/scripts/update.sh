@@ -9,6 +9,8 @@ update()
 {
   ${S_DIR}/collect_data.sh
   ${S_DIR}/write_bwUniData.sh
+  ${S_DIR}/write_data_year.sh
+  # TODO: ${S_DIR}/write_total.sh
 }
 
 update
