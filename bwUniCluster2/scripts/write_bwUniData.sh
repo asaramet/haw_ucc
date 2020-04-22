@@ -103,11 +103,11 @@ write_ts ()
 START_YEAR="2020"
 while [[ ${START_YEAR} -lt ${YEAR} ]]; do
   OUT_FILE="${OUT_FOLDER}/bwUniData_${START_YEAR}.ts"
-  echo "... Writing ${OUT_FILE} ..."
+  echo "... Writing ${OUT_FILE}"
   write_ts ${START_YEAR} "12" > ${OUT_FILE}
   START_YEAR=$(( ${START_YEAR} + 1 ))
 done
 
 OUT_FILE="${OUT_FOLDER}/bwUniData_${YEAR}.ts"
-echo "... Writing ${OUT_FILE} ..."
+echo "... Writing ${OUT_FILE}"
 write_ts ${YEAR} ${MONTH} > ${OUT_FILE}

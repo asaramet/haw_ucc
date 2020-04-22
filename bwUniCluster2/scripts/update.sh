@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
 MD="`dirname $(readlink -f ${0})`/.."
-
 S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
-
 
 htaccess () {
   cat << EOF
@@ -29,8 +27,8 @@ create_data_files()
 
 create_app()
 {
-  echo "... Create/copy standart files"
   ${S_DIR}/copy_helpers.sh
+  ${S_DIR}/create_mains.sh
 }
 
 update()
