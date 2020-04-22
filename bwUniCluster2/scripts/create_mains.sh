@@ -8,7 +8,7 @@ A_DIR=${MD}/src/app
 HTML="${A_DIR}/app.component.html"
 ROOTER="${A_DIR}/app.router.module.ts"
 
-START_YEAR="2019"
+START_YEAR="2020"
 YEAR=`date -d 'today' '+%Y'`
 
 write_html()

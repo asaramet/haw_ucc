@@ -4,6 +4,9 @@ MD="`dirname $(readlink -f ${0})`/.."
 S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
 
+[[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
+mkdir -p ${A_DIR}
+
 htaccess () {
   cat << EOF
 AuthUserFile /www/faculty/it/bwHPC/.htpasswd
@@ -29,6 +32,7 @@ create_app()
 {
   ${S_DIR}/copy_helpers.sh
   ${S_DIR}/create_mains.sh
+  ${S_DIR}/create_year_mains.sh
 }
 
 update()
