@@ -33,6 +33,7 @@ create_app()
   ${S_DIR}/copy_helpers.sh
   ${S_DIR}/create_mains.sh
   ${S_DIR}/create_year_mains.sh
+  ${S_DIR}/create_year_months.sh
 }
 
 update()
