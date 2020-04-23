@@ -34,6 +34,8 @@ create_app()
   ${S_DIR}/create_mains.sh
   ${S_DIR}/create_year_mains.sh
   ${S_DIR}/create_year_months.sh
+  ${S_DIR}/create_year_annual.sh
+  ${S_DIR}/create_year_total.sh
 }
 
 update()

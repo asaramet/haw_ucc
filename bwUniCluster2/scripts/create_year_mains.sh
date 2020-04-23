@@ -51,7 +51,7 @@ EOF
 write_component()
 {
   declare -i year=${1}
-  [[ ${year} -eq 0 ]] && echo "missing YEAR to create html for." && exit 1
+  [[ ${year} -eq 0 ]] && echo "missing YEAR to create component for." && exit 1
 
   cat << EOF
 import { NgModule } from '@angular/core';
@@ -71,7 +71,7 @@ EOF
 write_router()
 {
   declare -i year=${1}
-  [[ ${year} -eq 0 ]] && echo "missing YEAR to create html for." && exit 1
+  [[ ${year} -eq 0 ]] && echo "missing YEAR to create router for." && exit 1
 
   cat << EOF
 import { NgModule } from '@angular/core';
@@ -91,10 +91,10 @@ EOF
 write_module()
 {
   declare -i year=${1}
-  [[ ${year} -eq 0 ]] && echo "missing YEAR to create html for." && exit 1
+  [[ ${year} -eq 0 ]] && echo "missing YEAR to create module for." && exit 1
 
   declare -i end_month=${2}
-  [[ ${end_month} -eq 0 ]] && echo "missing END MONTH to create html for." && exit 1
+  [[ ${end_month} -eq 0 ]] && echo "missing END MONTH to create module for." && exit 1
 
   declare -i start_month="1"
   [[ ${year} == "2020" ]] && declare -i start_month="3"

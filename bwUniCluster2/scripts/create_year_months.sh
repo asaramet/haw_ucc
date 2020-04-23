@@ -128,6 +128,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
 
   while [[ ${start_month} -le  ${end_month} ]]; do
     month_folder="${OUTPUT_DIR}/${start_month}"
+    [[ -d ${month_folder} ]] && rm -rf ${month_folder}
     mkdir -p ${month_folder}
     write_module ${start_month} > "${month_folder}/${start_month}.module.ts"
     write_html > "${month_folder}/${start_month}.component.html"
