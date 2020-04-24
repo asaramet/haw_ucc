@@ -1,0 +1,138 @@
+#!/usr/bin/env bash
+
+# Create users/YEAR: YEAR.component.* YEAR.module.ts YEAR.router.ts
+
+TMP_FILE=${1}
+[[ ! -f ${TMP_FILE} ]] && echo "Unexisting temp file provided!" && exit 1
+
+MD="`dirname $(readlink -f ${0})`/.."
+A_DIR="${MD}/src/app/users"
+
+[[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
+mkdir -p ${A_DIR}
+
+START_YEAR="2019"
+YEAR=`date -d 'today' '+%Y'`
+
+MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 6:Sep 10:Oct 11:Nov 12:Dec'
+
+write_component()
+{
+  declare -i year=${1}
+  declare -i end_month=${2}
+
+  declare -i start_month="1"
+  [[ ${year} -eq "2020" ]] && declare -i start_month="3"
+
+  cat << EOF
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSort, MatTableDataSource } from '@angular/material';
+
+import { DataObject, YearlyUniUsers } from '../../_helpers/users.methods';
+import * as db from '../../_data/${year}';
+
+const monthlyData = [
+EOF
+
+  while [[ ${start_month} -le ${end_month} ]]; do
+    echo "  { month: ${start_month}, data: db.udata_${year}_${start_month} },"
+    start_month=$(( ${start_month} + 1 ))
+  done
+
+  cat << EOF
+  { month: -1, data: db.udata_${year} }
+];
+
+const Data = new DataObject();
+
+@Component({
+  selector: 'users-${year}-root',
+  templateUrl: './${year}.component.html'
+})
+export class Users${year}Component implements OnInit {
+  constructor() {}
+
+  private TABLE_DATA = Data.yearlyUsers(monthlyData);
+
+  public months:string[] = [
+EOF
+
+  declare -i start_month="1"
+  [[ ${year} -eq "2020" ]] && declare -i start_month="3"
+
+  month_str=""
+  while [[ ${start_month} -le ${end_month} ]]; do
+    for month in ${MONTHS}; do
+      IFS=":" read -ra ADDR <<< ${month}
+      if [[ ${ADDR[0]} -eq ${start_month} ]]; then
+        month_str="${month_str}'${ADDR[1]}', "
+      fi
+    done
+    start_month=$(( ${start_month} + 1 ))
+  done
+  month_str="${month_str}'Year'"
+
+  echo "    ${month_str}"
+
+  cat << EOF
+  ];
+
+  public displayedColums:string[] = ['name'].concat(this.months);
+  public dataSource: MatTableDataSource<YearlyUniUsers> =
+    new MatTableDataSource(this.TABLE_DATA);
+
+  @ViewChild(MatSort, {static:true}) sort: MatSort;
+
+  ngOnInit () {
+    this.dataSource.sort = this.sort;
+  }
+}
+EOF
+}
+
+write_html()
+{
+  year=${1}
+
+  cat << EOF
+<h1>Unique HAW users in ${year}</h1>
+<div class="users-table">
+<table mat-table [dataSource]="dataSource" matSort>
+
+  <ng-container matColumnDef="name" sticky>
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> University name </th>
+    <td mat-cell *matCellDef="let element">{{element.name}}
+    </td>
+  </ng-container>
+  <div *ngFor="let month of months">
+    <ng-container [matColumnDef]="month">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>{{month}}</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button color="accent" class="users-table-btn"
+          *ngIf="element[month] !== 0" [routerLink]="element.prefix + '/' + month">
+          {{element[month]}}
+        </button>
+        <p *ngIf="element[month] === 0" class="users-table-text">0</p>
+      </td>
+    </ng-container>
+  </div>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColums; sticky: true"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColums"></tr>
+</table></div>
+EOF
+}
+
+while [[ ${START_YEAR} -le ${YEAR} ]]; do
+  out_folder="${A_DIR}/${START_YEAR}"
+  mkdir -p ${out_folder}
+
+  echo "... Writing ${out_folder} mains"
+  write_html ${START_YEAR} > "${out_folder}/${START_YEAR}.component.html"
+
+  END_MONTH="12"
+  [[ ${START_YEAR} -eq "2020" ]] && END_MONTH=`date -d 'today' '+%m'`
+  write_component ${START_YEAR} ${END_MONTH} > "${out_folder}/${START_YEAR}.component.ts"
+
+  START_YEAR=$(( ${START_YEAR} + 1 ))
+done

@@ -45,6 +45,8 @@ create_users_folder()
 
   ${S_DIR}/get_active_haws.sh ${TMP_FILE}
 
+  ${S_DIR}/create_users_mains.sh ${TMP_FILE}
+
   #rm -f ${TMP_FILE}
 }
 
