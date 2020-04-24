@@ -28,7 +28,7 @@ create_data_files()
   ${S_DIR}/write_total.sh
 }
 
-create_app()
+create_main_app()
 {
   ${S_DIR}/copy_helpers.sh
   ${S_DIR}/create_mains.sh
@@ -38,10 +38,21 @@ create_app()
   ${S_DIR}/create_year_total.sh
 }
 
+create_users_folder()
+{
+  TMP_FILE="${A_DIR}/temp.txt"
+  [[ -f ${TMP_FILE} ]] && rm -f ${TMP_FILE}
+
+  ${S_DIR}/get_active_haws.sh ${TMP_FILE}
+
+  #rm -f ${TMP_FILE}
+}
+
 update()
 {
   create_data_files
-  create_app
+  create_main_app
+  create_users_folder
 
   PUBLIC_DIR=${MD}/public
   [[ -d ${PUBLIC_DIR} ]] && mkdir -p ${PUBLIC_DIR}
