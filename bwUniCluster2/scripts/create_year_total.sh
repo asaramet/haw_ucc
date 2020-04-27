@@ -2,7 +2,6 @@
 
 # Crate YEARly: YEAR.component.* YEAR.module.ts YEAR.router.ts
 
-
 MD="`dirname $(readlink -f ${0})`/.."
 A_DIR=${MD}/src/app
 

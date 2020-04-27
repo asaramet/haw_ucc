@@ -11,7 +11,7 @@ A_DIR="${MD}/src/app/users"
 [[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
 mkdir -p ${A_DIR}
 
-START_YEAR="2019"
+START_YEAR="2020"
 YEAR=`date -d 'today' '+%Y'`
 
 MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 6:Sep 10:Oct 11:Nov 12:Dec'

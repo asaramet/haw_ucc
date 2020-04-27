@@ -10,7 +10,7 @@ A_DIR=${MD}/src/app
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sacct_logs"
 PREFIXES='aa as es hf hk hn hr hs ht hu ro'
 
-declare -i START_YEAR="2019"
+declare -i START_YEAR="2020"
 declare -i END_YEAR=`date -d 'today' '+%Y'`
 
 is_haw_active()
@@ -53,7 +53,7 @@ read_monthly_logs()
 }
 
 while [[ ${START_YEAR} -le ${END_YEAR} ]]; do
-  echo "... Writing temp data into ${TMP_FILE}"
+  echo "... Writing temp data ${START_YEAR} into ${TMP_FILE}"
   END_MONTH="12"
   [[ ${START_YEAR} -eq ${END_YEAR} ]] && END_MONTH=`date -d 'today' '+%m'`
   read_monthly_logs ${START_YEAR} ${END_MONTH}
