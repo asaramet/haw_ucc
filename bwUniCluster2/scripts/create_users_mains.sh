@@ -36,6 +36,13 @@ import { Users${year}RouterModule } from './${year}.router';
 import { Users${year}Component } from './${year}.component';
 EOF
 
+  cat > ${router_file} << EOF
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { Users${year}Component } from './${year}.component';
+EOF
+
   components="" # collect components to write them in declarations
   active_haws="" # active haw this year to add yearly component
   while read -r line; do
@@ -45,7 +52,7 @@ EOF
       prefix=${ADDR[2]}
       cmp="${prefix^}${year}${month}Component"
       components="${components} ${cmp}"
-      echo "import { ${cmp} } from './${prefix}/${month}.component';" >> ${module_file}
+      echo "import { ${cmp} } from './${prefix}/${month}.component';" | tee -a ${router_file} >> ${module_file}
       case ${active_haws} in
         *${prefix}* ) # if prefix in active_haws leave it, don't modify
         ;;
@@ -58,7 +65,7 @@ EOF
   for prefix in ${active_haws}; do
     cmp="${prefix^}${year}Component"
     components="${components} ${cmp}"
-    echo "import { ${cmp} } from './${prefix}/year.component';" >> ${module_file}
+    echo "import { ${cmp} } from './${prefix}/year.component';" | tee -a ${router_file} >> ${module_file}
   done
 
   cat >> ${module_file} << EOF
@@ -72,8 +79,26 @@ EOF
   declarations: [
 EOF
 
+  echo "const routes: Routes = [" >> ${router_file}
+
   for comp in ${components}; do
     echo "    ${comp}," >> ${module_file}
+
+    # write rooter.ts
+    prefix=${comp:0:2} # first 2 letters. Ex Aa
+    prefix=${prefix,,} # convert all to lowercase
+    month=${comp%Component} # cut suffix Component
+    month=${month:6} # cut prefix. Ex: Aa2020
+
+    # if it's an year component month will be ''
+    [[ -z ${month} ]] &&
+    echo "  { path: '${prefix}/Year', component: ${comp}}," >> ${router_file} && continue
+
+    for combo in ${MONTHS}; do
+      IFS=":" read -ra ADDR <<< ${combo}
+      [[ ${ADDR[0]} -eq ${month} ]] &&
+      echo "  { path: '${prefix}/${ADDR[1]}', component: ${comp}}," >> ${router_file} && continue
+    done
   done
 
   cat >> ${module_file} << EOF
@@ -81,6 +106,16 @@ EOF
   ],
 })
 export class Users${year}Module { }
+EOF
+
+  cat >> ${router_file} << EOF
+  { path: '', component: Users${year}Component}
+];
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class Users${year}RouterModule {}
 EOF
 }
 
