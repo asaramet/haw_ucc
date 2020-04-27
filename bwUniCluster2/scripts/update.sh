@@ -47,7 +47,7 @@ create_users_folder()
 
   ${S_DIR}/create_users_mains.sh ${TMP_FILE}
 
-  #rm -f ${TMP_FILE}
+  rm -f ${TMP_FILE}
 }
 
 update()

@@ -10,7 +10,6 @@ A_DIR=${MD}/src/app
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sacct_logs"
 PREFIXES='aa as es hf hk hn hr hs ht hu ro'
 
-
 declare -i START_YEAR="2019"
 declare -i END_YEAR=`date -d 'today' '+%Y'`
 

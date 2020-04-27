@@ -5,6 +5,8 @@
 TMP_FILE=${1}
 [[ ! -f ${TMP_FILE} ]] && echo "Unexisting temp file provided!" && exit 1
 
+PREFIXES='aa as es hf hk hn hr hs ht hu ro'
+
 MD="`dirname $(readlink -f ${0})`/.."
 A_DIR="${MD}/src/app/users"
 
@@ -15,6 +17,80 @@ START_YEAR="2019"
 YEAR=`date -d 'today' '+%Y'`
 
 MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 6:Sep 10:Oct 11:Nov 12:Dec'
+
+write_module_rooter()
+{
+  declare -i year=${1}
+  [[ ${year} -lt ${START_YEAR} ]] && echo "Wrong YEAR specified to write module ts" && exit 1
+
+  module_file="${A_DIR}/${year}/${year}.module.ts"
+  router_file="${A_DIR}/${year}/${year}.router.ts"
+
+  cat > ${module_file} << EOF
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material';
+import { MatSortModule } from '@angular/material/sort';
+import { MatButtonModule } from '@angular/material/button';
+import { GoogleChartsModule } from 'angular-google-charts';
+
+import { Users${year}RouterModule } from './${year}.router';
+import { Users${year}Component } from './${year}.component';
+EOF
+
+  components="" # collect components to write them in declarations
+  active_haws="" # active haw this year to add yearly component
+  while read -r line; do
+    read -ra ADDR <<< ${line}
+    if [[ ${ADDR[0]} -eq ${year} ]]; then
+      case ${PREFIXES} in
+        *${ADDR[2]}* ) # ADDR[2] (ex. aa) is in PREFIXES
+          month=${ADDR[1]}
+          prefix=${ADDR[2]}
+          cmp="${prefix^}${year}${month}Component"
+          components="${components} ${cmp}"
+          echo "import { ${cmp} } from './${prefix}/${month}.component';" >> ${module_file}
+          case ${active_haws} in
+            *${prefix}* )
+            ;;
+            *)
+              active_haws="${active_haws} ${prefix}"
+          esac
+        ;;
+
+        *)
+      esac
+    fi
+  done < ${TMP_FILE}
+
+  for prefix in ${active_haws}; do
+    cmp="${prefix^}${year}Component"
+    components="${components} ${cmp}"
+    echo "import { ${cmp} } from './${prefix}/year.component';" >> ${module_file}
+  done
+
+  cat >> ${module_file} << EOF
+@NgModule({
+  imports: [
+    Users${year}RouterModule,
+    MatTableModule, MatSortModule,
+    MatButtonModule, GoogleChartsModule,
+    CommonModule
+  ],
+  declarations: [
+EOF
+
+  for comp in ${components}; do
+    echo "    ${comp}," >> ${module_file}
+  done
+
+  cat >> ${module_file} << EOF
+    Users${year}Component,
+  ],
+})
+export class Users${year}Module { }
+EOF
+}
 
 write_component()
 {
@@ -129,6 +205,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
 
   echo "... Writing ${out_folder} mains"
   write_html ${START_YEAR} > "${out_folder}/${START_YEAR}.component.html"
+  write_module_rooter ${START_YEAR}
 
   END_MONTH="12"
   [[ ${START_YEAR} -eq "2020" ]] && END_MONTH=`date -d 'today' '+%m'`
