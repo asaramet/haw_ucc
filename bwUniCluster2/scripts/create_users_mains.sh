@@ -5,8 +5,6 @@
 TMP_FILE=${1}
 [[ ! -f ${TMP_FILE} ]] && echo "Unexisting temp file provided!" && exit 1
 
-PREFIXES='aa as es hf hk hn hr hs ht hu ro'
-
 MD="`dirname $(readlink -f ${0})`/.."
 A_DIR="${MD}/src/app/users"
 
@@ -43,22 +41,16 @@ EOF
   while read -r line; do
     read -ra ADDR <<< ${line}
     if [[ ${ADDR[0]} -eq ${year} ]]; then
-      case ${PREFIXES} in
-        *${ADDR[2]}* ) # ADDR[2] (ex. aa) is in PREFIXES
-          month=${ADDR[1]}
-          prefix=${ADDR[2]}
-          cmp="${prefix^}${year}${month}Component"
-          components="${components} ${cmp}"
-          echo "import { ${cmp} } from './${prefix}/${month}.component';" >> ${module_file}
-          case ${active_haws} in
-            *${prefix}* )
-            ;;
-            *)
-              active_haws="${active_haws} ${prefix}"
-          esac
+      month=${ADDR[1]}
+      prefix=${ADDR[2]}
+      cmp="${prefix^}${year}${month}Component"
+      components="${components} ${cmp}"
+      echo "import { ${cmp} } from './${prefix}/${month}.component';" >> ${module_file}
+      case ${active_haws} in
+        *${prefix}* ) # if prefix in active_haws leave it, don't modify
         ;;
-
         *)
+          active_haws="${active_haws} ${prefix}"
       esac
     fi
   done < ${TMP_FILE}
