@@ -51,15 +51,43 @@ create_users_folder()
   rm -f ${TMP_FILE}
 }
 
-update()
+create_prod_files()
 {
-  create_data_files
-  create_main_app
-  create_users_folder
+  ${S_DIR}/create_tsconfig.sh
 
   PUBLIC_DIR=${MD}/public
   [[ -d ${PUBLIC_DIR} ]] && mkdir -p ${PUBLIC_DIR}
   htaccess > "${PUBLIC_DIR}/.htaccess"
 }
 
-update
+update()
+{
+  create_data_files
+  create_main_app
+  create_users_folder
+  create_prod_files
+}
+
+help_menu () {
+  cat << EOF
+  Update bwUniCluster2 data
+
+  Usage: ${0} [OPTIONS]
+
+  OPTIONS:
+    -h | --help         Show this message
+
+  EXAMPLES:
+    Update bwUniCluster2
+        $ ${0}
+EOF
+}
+
+case "${1}" in
+  -h | --help)
+    help_menu
+  ;;
+  *)
+    update
+  ;;
+esac
