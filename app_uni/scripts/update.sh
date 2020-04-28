@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-NG_DATA=${MD}/../../bwUniCluster1/scripts/ngData
+NG_DATA=${MD}/../../bwUniCluster2/scripts/ngData
 #prefixes='aa hu'
 prefixes='aa as hf hk hn hr hs ht hu ro'
 validPrefixes='aa as hf hk hn hr hs ht hu ro'
@@ -44,7 +44,7 @@ update () {
 
   # sync
   chmod g=u public -R
-  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/_ssl/${1}/ --delete-excluded
+  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${1}/ --delete-excluded
 
   # save
   [[ -d public ]] && [[ -d ./saves/${1} ]] && rm ./saves/${1} -rf && sleep 5 &&

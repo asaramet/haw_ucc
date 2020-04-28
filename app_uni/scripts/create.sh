@@ -2,7 +2,7 @@
 
 MD=`dirname $(readlink -f $0)`
 possible_prefixes='aa as es hf hk hn hr hs ht hu ro'
-scriptsFolder="${MD}/../../bwUniCluster1/scripts"
+scriptsFolder="${MD}/../../bwUniCluster2/scripts"
 
 build () {
   [[ ! -d src ]] && npm run make:new

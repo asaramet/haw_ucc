@@ -4,7 +4,7 @@ PATH=$PATH:$HOME/WORK/node-v10.16.0-linux-x64/bin
 MD="$HOME/WORK/haw_ucc"
 UPDATE_FILE="$HOME/WORK/update.log"
 
-cd ${MD}/bwUniCluster1
+cd ${MD}/bwUniCluster2
 echo -e "\n=== update $MD on `date` \n" > "${UPDATE_FILE}"
 npm run update 1>>${UPDATE_FILE} 2>&1 &&
 
