@@ -56,7 +56,7 @@ create_prod_files()
   ${S_DIR}/create_tsconfig.sh
 
   PUBLIC_DIR=${MD}/public
-  [[ -d ${PUBLIC_DIR} ]] && mkdir -p ${PUBLIC_DIR}
+  [[ ! -d ${PUBLIC_DIR} ]] && mkdir -p ${PUBLIC_DIR}
   htaccess > "${PUBLIC_DIR}/.htaccess"
 }
 
