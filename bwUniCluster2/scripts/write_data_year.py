@@ -79,7 +79,10 @@ def monthly_data(log_file):
 
       user_data = line.split()[1:4]
       prefix = user_data[0].split('_')[0]
-      data = {'userID': user_data[1], 'email': '-', 'costs': user_data[2]}
+
+      if user_data[1] in ["User", "--------------------"]:
+        continue
+      data = {'userID': user_data[1], 'email': '-', 'costs': int(user_data[2])}
       if prefix in PREFIXES:
         if data_list == []:
           data_list = [{'haw': prefix, 'data': [data]}]
@@ -93,7 +96,7 @@ def monthly_data(log_file):
               # get the user data and update the costs in data
               for user_obj in uni['data']:
                 if user_obj ['userID'] == user_data[1]:
-                  data['costs'] = str(int(user_data[2]) + int(user_obj['costs']))
+                  data['costs'] = int(user_data[2]) + user_obj['costs']
                   uni['data'].remove(user_obj)
 
             uni['data'].append(data)

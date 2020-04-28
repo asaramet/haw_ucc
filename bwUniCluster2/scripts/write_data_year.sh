@@ -16,7 +16,7 @@ declare -i START_YEAR="2019"
 [[ ${START_YEAR} -lt ${YEAR} ]] && [[ ${END_MONTH} -eq 1 ]] &&
 START_YEAR=$(( ${YEAR} - 1 )) &&
 echo "... Building ${OUT_FOLDER}/${START_YEAR}.ts" &&
-python3 write_data_year.py -y ${START_YEAR} -m "12"
+python3 "${MD}/scripts/write_data_year.py" -y ${START_YEAR} -m "12"
 
 echo "... Building ${OUT_FOLDER}/${YEAR}.ts"
-python3 write_data_year.py -y ${YEAR} -m ${END_MONTH}
+python3 "${MD}/scripts/write_data_year.py" -y ${YEAR} -m ${END_MONTH}

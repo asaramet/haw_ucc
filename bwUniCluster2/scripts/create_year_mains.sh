@@ -54,17 +54,14 @@ write_component()
   [[ ${year} -eq 0 ]] && echo "missing YEAR to create component for." && exit 1
 
   cat << EOF
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { Year${year}Component } from './${year}.component';
-const routes: Routes = [
-  { path: '', component: Year${year}Component }
-];
-@NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+import { Component } from '@angular/core';
+@Component({
+  selector: 'year-${year}-root',
+  templateUrl: './${year}.component.html'
 })
-export class Year${year}RouterModule {}
+export class Year${year}Component {
+  constructor () {}
+}
 EOF
 }
 
