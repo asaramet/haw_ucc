@@ -27,7 +27,7 @@ write_html()
     <google-chart #chart
       [type]="type"
       [data]="data"
-      [columnNames]="columnNames"
+      [columns]="columnNames"
       [options]="options"
       [width]="width"
       [height]="height">
