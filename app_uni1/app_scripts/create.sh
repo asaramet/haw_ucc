@@ -12,8 +12,12 @@ build () {
 create () {
   prefix=${1}
   year=${2}
-  currentYear=`date +%Y`
-  currentMonth=`date +%m`
+
+  declare -i currentYear=`date +%Y`
+  declare -i currentMonth=`date +%m`
+
+  [[ ${currentYear} -gt "2020" ]] && declare -i currentYear="2020"
+  [[ ${currentYear} -eq "2020" ]] && declare -i currentMonth="3"
   [[ -z ${prefix} ]] && echo "No uni prefix specified" && exit 0
   echo "Creating components for ${prefix}, ${year}..."
   ${scriptsFolder}/create_users_components.sh -c ${prefix} ${year} &&

@@ -79,6 +79,17 @@ Require user admin
 EOF
 }
 
+install_npm()
+{
+  if [[ ! -d "${MD}/node_modules" ]]; then
+    cd ${MD} &&
+    npm install &&
+    npm uninst typescript &&
+    npm i -S typescript@3.5 &&
+    npm audit fix
+  fi
+}
+
 update () {
   [[ ! -d ${A_DIR} ]] && mkdir -p ${A_DIR}
   [[ ! -d ${OUTPUT_DIR} ]] && mkdir ${OUTPUT_DIR}
@@ -109,11 +120,13 @@ update () {
   [[ ! -f ${A_DIR}/bwUniCluster1/tsconfig-prod-aot.json ]] &&
   python3 ${S_DIR}/create_tsconfig.py -y ${CURRENT_YEAR}
   ${S_DIR}/copy_stds.sh
-  #cp ${MD}/total.ts ${A_DIR}/_data/
+  
   python3 ${S_DIR}/total.py -o ${A_DIR}/_data/total.ts
   PUBLIC_DIR=${A_DIR}/../../public
   [[ ! -d ${PUBLIC_DIR} ]] && mkdir ${PUBLIC_DIR}
   htaccess > ${PUBLIC_DIR}/.htaccess
+
+  install_npm
 }
 
 help_menu () {

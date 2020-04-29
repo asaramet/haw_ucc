@@ -38,7 +38,7 @@ generate_annual_html () {
     <google-chart #chart
       [type]="type"
       [data]="data"
-      [columnNames]="columnNames"
+      [columns]="columnNames"
       [options]="options"
       [width]="width"
       [height]="height">
@@ -146,7 +146,7 @@ generate_total_html () {
     <google-chart #chart
       [type]="type"
       [data]="data"
-      [columnNames]="columnNames"
+      [columns]="columnNames"
       [options]="options"
       [width]="width"
       [height]="height">

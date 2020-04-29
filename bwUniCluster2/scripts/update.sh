@@ -60,12 +60,23 @@ create_prod_files()
   htaccess > "${PUBLIC_DIR}/.htaccess"
 }
 
+install_npm_packs()
+{
+  if [[ ! -d node_modules ]]; then
+    npm install &&
+    npm un typescript &&
+    npm i -S typescript@3.5 &&
+    npm audit fix
+  fi
+}
+
 update()
 {
   create_data_files
   create_main_app
   create_users_folder
   create_prod_files
+  install_npm_packs
 }
 
 help_menu () {

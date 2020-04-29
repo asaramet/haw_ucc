@@ -40,11 +40,9 @@ bwUniCluster*/Thumbs.db
 # AOT files
 bwUniCluster*/src/styles.css
 
-app_uni/scripts/htppwd/data
-app_uni/saves
-app_uni/src
-app_uni/node_modules
-app_uni/package-lock.json
+app_uni*/src
+app_uni*/node_modules
+app_uni*/package-lock.json
 
 # Data files
 bwUniCluster*/src/app

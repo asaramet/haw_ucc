@@ -43,8 +43,9 @@ move_files () {
     echo "--- moving files from ${dataFolder} to ${appFolder}..."
     mv ${dataFolder}/${year}/* ${appFolder}/${year}
   else
-    destFolder="${MD}/../app_uni/src/app/users/"
+    destFolder="${MD}/../../app_uni1/src/app/users/"
     echo "--- moving files from ${dataFolder} to ${destFolder}... "
+    #[[ -d ${destFolder} ]] && rm -rf ${destFolder} && mkdir -p ${destFolder}
     mv ${dataFolder}/${uni}/* ${destFolder}
   fi
 }
