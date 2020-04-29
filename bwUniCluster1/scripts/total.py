@@ -43,10 +43,14 @@ def createTotalTS(dataFile, outputFile):
 
   with open(outputFile, 'w') as tsFile:
     year, startYear = date.today().year, 2017
+    if year > 2020: year = 2020
     while startYear < year:
       tsFile.write(tsObject(dataFile, startYear, 12))
       startYear += 1
-    tsFile.write(tsObject(dataFile, year, date.today().month))
+
+    month = date.today().month
+    if year == 2020: month = 3
+    tsFile.write(tsObject(dataFile, year, month))
 
 def main (argv):
   dataFile = "/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/statistics/uc1_knotenauslastung_standorte.csv"

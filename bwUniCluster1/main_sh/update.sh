@@ -9,6 +9,7 @@ OUTPUT_DIR="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/output"
 CURRENT_MONTH=`date +%m`
 [[ ${CURRENT_MONTH:0:1} -eq 0 ]] && CURRENT_MONTH=${CURRENT_MONTH:1:2}
 CURRENT_YEAR=`date +%Y`
+[[ ${CURRENT_YEAR} -eq "2020" ]] && declare -i CURRENT_MONTH="3"
 
 collect_data () {
   YEAR=${1}
@@ -23,7 +24,7 @@ collect_data () {
 }
 
 gather_data () {
-  YEAR=${1}
+  declare -i YEAR=${1}
 
   echo "-- Gather costs and users data for ${year} --"
   ${S_DIR}/gather_costs.sh ${YEAR} 2>&1 &&
@@ -39,8 +40,8 @@ gather_data () {
 }
 
 create_unis_components () {
-  YEAR=${1}
-  MONTH=${2}
+  declare -i YEAR=${1}
+  declare -i MONTH=${2}
 
   startMonth=1
   [[ ${YEAR} -eq 2017 ]] && startMonth=5
@@ -51,8 +52,8 @@ create_unis_components () {
 }
 
 update_yearly_components () {
-  YEAR=${1}
-  MONTH=${2}
+  declare -i YEAR=${1}
+  declare -i MONTH=${2}
 
   startMonth=1
   [[ ${YEAR} -eq 2017 ]] && startMonth=5
@@ -82,6 +83,8 @@ update () {
   [[ ! -d ${A_DIR} ]] && mkdir -p ${A_DIR}
   [[ ! -d ${OUTPUT_DIR} ]] && mkdir ${OUTPUT_DIR}
   declare -i fromYear=2017
+
+  [[ ${CURRENT_YEAR} -gt "2020" ]] && declare -i CURRENT_YEAR="2020" && declare -i CURRENT_MONTH="3"
   while [[ ${fromYear} -lt ${CURRENT_YEAR} ]]; do
     [[ ! -d ${OUTPUT_DIR}/../${fromYear} ]] ||
     [[ ! -d ${OUTPUT_DIR}/../haw/${fromYear} ]] &&

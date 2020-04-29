@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-NG_DATA=${MD}/../../bwUniCluster2/scripts/ngData
+NG_DATA=${MD}/../../bwUniCluster1/scripts/ngData
 #prefixes='aa hu'
 prefixes='aa as hf hk hn hr hs ht hu ro'
-validPrefixes='aa as hf hk hn hr hs ht hu ro'
+validPrefixes='aa as es hf hk hn hr hs ht hu ro'
 host="asaramet@comserver.hs-esslingen.de"
 
 make () {
@@ -37,14 +37,13 @@ update () {
 
   # compile
   ${MD}/create.sh all ${1} &&
-  npm run cp:aot &&
-  ngc -p tsconfig-prod-aot.json &&
+  npm run build &&
   npm run build:css && webpack --config webpack/aot.config.js &&
   htaccess ${1} > public/.htaccess
 
   # sync
   chmod g=u public -R
-  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${1}/ --delete-excluded
+  #rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${1}/ --delete-excluded
 
   # save
   [[ -d public ]] && [[ -d ./saves/${1} ]] && rm ./saves/${1} -rf && sleep 5 &&
@@ -82,7 +81,12 @@ case ${1} in
   *)
     [[ -z ${1} ]] && echo "ERROR: Please specify HAW. For more info do: '${0} help'" && exit 0
     for prefix in ${validPrefixes}; do
-      [[ ${prefix} -eq ${1} ]] && make && update ${1} && clean && exit 0
+      if [[ ${prefix} == ${1} ]]; then
+        make
+        update ${1}
+        #clean
+        exit 0
+      fi
     done
     echo "ERROR: ${1} is not a valid HAW prefix!"
   ;;
