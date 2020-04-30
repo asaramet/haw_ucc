@@ -23,7 +23,6 @@
     "build:css": "webpack --config webpack/css.config.js && npm run cp:css",
     "prod": "npm run build && npm run build:css && webpack --config webpack/aot.config.js",
     "compile": "test -d public || mkdir public; npm run prod && npm run clean:src",
-    "create:new": "./app_scripts/create.sh -b",
     "watch": "ng serve --aot --watch",
     "update": "./app_scripts/update.sh"
   },

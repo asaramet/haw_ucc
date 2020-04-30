@@ -18,7 +18,7 @@ update_haws()
 {
   echo -e "\n=== update haw's" >> "${UPDATE_FILE}" &&
   cd ${MD}/app_uni &&
-  npm run update all 1>>${UPDATE_FILE} 2>&1
+  npm run update 1>>${UPDATE_FILE} 2>&1
 }
 
 update_main
