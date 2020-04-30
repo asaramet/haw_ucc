@@ -21,5 +21,6 @@ update_haws()
   npm run update 1>>${UPDATE_FILE} 2>&1
 }
 
-update_main
+update_main &&
+update_haws
 echo -e "\n=== DONE! `date`" >> "${UPDATE_FILE}"
