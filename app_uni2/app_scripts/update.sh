@@ -92,8 +92,8 @@ case ${1} in
     if [[ ! -z ${1} ]]; then
       prefix=${1}
       update ${prefix} &&
-      #sync ${prefix} &&
-      #clean &&
+      sync ${prefix} &&
+      clean &&
       exit 0
     fi
     for prefix in ${prefixes}; do
