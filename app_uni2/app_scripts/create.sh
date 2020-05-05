@@ -17,7 +17,7 @@ MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 6:Sep 10:Oct 11:Nov 12:D
 mkdir -p ${A_DIR}
 
 declare -i START_YEAR="2020"
-declare -i END_YEAR=`date -d 'today' '+%Y'`
+declare -i END_YEAR=`date -d 'yesterday' '+%Y'`
 
 write_main_html()
 {

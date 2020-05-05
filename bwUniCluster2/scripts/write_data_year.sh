@@ -5,10 +5,10 @@ MD="`dirname $(readlink -f ${0})`/.."
 
 OUT_FOLDER="${MD}/src/app/_data"
 
-declare -i YEAR=`date -d 'today' '+%Y'`
+declare -i YEAR=`date -d 'yesterday' '+%Y'`
 declare -i END_MONTH=`date -d 'yesterday' '+%m'`
 
-declare -i START_YEAR="2019"
+declare -i START_YEAR="2020"
 
 [[ ${YEAR} -lt ${START_YEAR} ]] && echo "Wrong argument YEAR: ${YEAR}" && exit 1
 

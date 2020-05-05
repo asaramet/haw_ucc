@@ -6,7 +6,7 @@ OUT_FILE="${MD}/src/app/_data/total.ts"
 
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sreport_logs"
 
-declare -i YEAR=`date -d 'today' '+%Y'`
+declare -i YEAR=`date -d 'yesterday' '+%Y'`
 declare -i START_YEAR="2020"
 
 echo_data()

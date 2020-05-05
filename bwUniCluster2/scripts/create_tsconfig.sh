@@ -5,7 +5,7 @@ MD="`dirname $(readlink -f ${0})`/.."
 TSCONFIG_FILE="${MD}/tsconfig-prod-aot.json"
 
 declare -i START_YEAR="2020"
-declare -i YEAR=`date -d 'today' '+%Y'`
+declare -i YEAR=`date -d 'yesterday' '+%Y'`
 
 write_file()
 {

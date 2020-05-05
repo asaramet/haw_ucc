@@ -7,7 +7,7 @@ MD="`dirname $(readlink -f ${0})`/.."
 A_DIR=${MD}/src/app
 
 START_YEAR="2020"
-YEAR=`date -d 'today' '+%Y'`
+YEAR=`date -d 'yesterday' '+%Y'`
 
 write_html()
 {

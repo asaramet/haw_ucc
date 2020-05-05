@@ -9,7 +9,7 @@ HTML="${A_DIR}/app.component.html"
 ROOTER="${A_DIR}/app.router.module.ts"
 
 START_YEAR="2020"
-YEAR=`date -d 'today' '+%Y'`
+YEAR=`date -d 'yesterday' '+%Y'`
 
 write_html()
 {
