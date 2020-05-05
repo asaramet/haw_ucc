@@ -55,7 +55,7 @@ write_main_component()
   declare -i year=${1}
 
   declare -i last_month="12"
-  [[ ${year} -eq ${END_YEAR} ]] && declare -i last_month=`date -d 'today' '+%m'`
+  [[ ${year} -eq ${END_YEAR} ]] && declare -i last_month=`date -d 'yesterday' '+%m'`
 
   declare -i month="1"
   [[ ${year} -eq "2020" ]] && declare -i month="3"

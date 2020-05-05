@@ -55,7 +55,7 @@ read_monthly_logs()
 while [[ ${START_YEAR} -le ${END_YEAR} ]]; do
   echo "... Writing temp data ${START_YEAR} into ${TMP_FILE}"
   END_MONTH="12"
-  [[ ${START_YEAR} -eq ${END_YEAR} ]] && END_MONTH=`date -d 'today' '+%m'`
+  [[ ${START_YEAR} -eq ${END_YEAR} ]] && END_MONTH=`date -d 'yesterday' '+%m'`
   read_monthly_logs ${START_YEAR} ${END_MONTH}
   START_YEAR=$(( ${START_YEAR} + 1 ))
 done

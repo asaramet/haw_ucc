@@ -6,7 +6,7 @@ MD="`dirname $(readlink -f ${0})`/.."
 OUT_FOLDER="${MD}/src/app/_data"
 
 declare -i YEAR=`date -d 'today' '+%Y'`
-declare -i END_MONTH=`date -d 'today' '+%m'`
+declare -i END_MONTH=`date -d 'yesterday' '+%m'`
 
 declare -i START_YEAR="2019"
 

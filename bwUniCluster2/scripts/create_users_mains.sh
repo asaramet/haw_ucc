@@ -235,7 +235,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   write_module_rooter ${START_YEAR}
 
   END_MONTH="12"
-  [[ ${START_YEAR} -eq "2020" ]] && END_MONTH=`date -d 'today' '+%m'`
+  [[ ${START_YEAR} -eq ${YEAR} ]] && END_MONTH=`date -d 'yesterday' '+%m'`
   write_component ${START_YEAR} ${END_MONTH} > "${out_folder}/${START_YEAR}.component.ts"
 
   START_YEAR=$(( ${START_YEAR} + 1 ))

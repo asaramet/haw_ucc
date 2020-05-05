@@ -120,7 +120,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   OUTPUT_DIR="${A_DIR}/${START_YEAR}"
   echo "... Create ${OUTPUT_DIR} months"
 
-  declare -i end_month=`date -d 'today' '+%m'`
+  declare -i end_month=`date -d 'yesterday' '+%m'`
   [[ ${START_YEAR} -lt ${YEAR} ]] && end_month="12"
 
   declare -i start_month="1"

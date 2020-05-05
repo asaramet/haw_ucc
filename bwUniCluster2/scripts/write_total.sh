@@ -60,5 +60,5 @@ while [[ ${START_YEAR} -lt ${YEAR} ]]; do
   START_YEAR=$(( ${START_YEAR} + 1 ))
 done
 
-declare -i END_MONTH=`date -d 'today' '+%m'`
+declare -i END_MONTH=`date -d 'yesterday' '+%m'`
 write_ts ${YEAR} ${END_MONTH} >> ${OUT_FILE}
