@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2"
-SERVER_FOLDER="es_asaramet@bwunicluster.scc.kit.edu:/opt/bwhpc/es/dbdata"
+#SERVER_FOLDER="es_asaramet@bwunicluster.scc.kit.edu:/opt/bwhpc/es/dbdata"
+SERVER_FOLDER="asaramet@grid01.hs-esslingen.de:/opt/openfoam/bwUniData"
 
 sync()
 {
@@ -21,7 +22,7 @@ help()
     -h | --help       Show this message
 
   NO OPTIONS          will sync tha data
-  
+
   EXAMPLES:
     Synchronize all data with bwUniCluster2
         $ ${0}
