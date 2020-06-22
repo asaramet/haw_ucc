@@ -14,7 +14,7 @@ mkdir -p ${A_DIR}
 START_YEAR="2020"
 YEAR=`date -d 'yesterday' '+%Y'`
 
-MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 6:Sep 10:Oct 11:Nov 12:Dec'
+MONTHS='1:Jan 2:Feb 3:Mar 4:Apr 5:May 6:Jun 7:Jul 8:Aug 9:Sep 10:Oct 11:Nov 12:Dec'
 
 write_module_rooter()
 {

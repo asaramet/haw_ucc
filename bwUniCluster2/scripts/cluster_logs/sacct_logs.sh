@@ -3,7 +3,7 @@
 LOG_FOLDER="/opt/bwhpc/es/dbdata/sacct_logs"
 
 ACCOUNT="haw"
-FIELDS="JobID,Group,User%20,cputimeraw,ExitCode,State,Start,End,ncpus,partition%12"
+FIELDS="JobID,Group,User%20,cputimeraw,ExitCode,State,Start,End,ncpus,partition%12,Submit"
 
 DATE_FORMAT='+%Y-%m-%d'
 
