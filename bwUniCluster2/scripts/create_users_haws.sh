@@ -25,11 +25,6 @@ write_html()
         <td mat-cell *matCellDef="let element">{{element.userID}}</td>
       </ng-container>
 
-      <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
-        <td mat-cell *matCellDef="let element">{{element.email}}</td>
-      </ng-container>
-
       <ng-container matColumnDef="pcts">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Pct</th>
         <td mat-cell *matCellDef="let element">{{element.pcts}} %</td>
@@ -110,7 +105,7 @@ EOF
 
   public title:string = "Unique users workload for ${year}:";
 
-  public displayedColums:string[] = ['userID', 'email', 'pcts'];
+  public displayedColums:string[] = ['userID', 'pcts'];
   public dataSource = new MatTableDataSource(this.TABLE_DATA);
 
   // Pie chart
