@@ -1,49 +1,39 @@
 feedback/
-output/
-output.bak/
-bak/
 data/
-clean_angular/
 commands
-bwUniCluster*/scripts/ngData/
-bwUniCluster*/scripts/log.update
-bwUniCluster*/scripts/single_es_out.log
+*/scripts/ngData/
+*/scripts/log.update
 
 # Angular files
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # compiled output
-bwUniCluster*/dist
-bwUniCluster*/tmp
-bwUniCluster*/out-tsc
-bwUniCluster*/public
-bwUniCluster*/prod_work
-bwUniCluster*/src/favicon.ico
-bwUniCluster*/src/main.aot.ts
-bwUniCluster*/aot_files/htppwd/
-bwUniCluster*/package-lock.json
+*/public
+*/prod_work
+*/src/favicon.ico
+*/src/main.aot.ts
+*/aot_files/htppwd/
+*/package-lock.json
+*/src/assets
 
 # dependencies
-bwUniCluster*/node_modules
+*/node_modules
 
 # IDEs and editors
-bwUniCluster*/.sass-lint.yml
-bwUniCluster*/tsconfig-prod-aot.json
+*/.sass-lint.yml
+*/tsconfig-prod-aot.json
 
 # misc
 npm-debug.log
 
 # System Files
-bwUniCluster*/.DS_Store
-bwUniCluster*/Thumbs.db
+*/.DS_Store
+*/Thumbs.db
 
 # AOT files
-bwUniCluster*/src/styles.css
+*/src/styles.css
 
 app_uni*/src
-app_uni*/node_modules
-app_uni*/package-lock.json
 
 # Data files
-bwUniCluster*/src/app
-total.ts
+*/src/app
