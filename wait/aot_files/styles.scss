@@ -30,9 +30,9 @@ $secondary-typography: mat-typography-config(
 @include mat-core($general-typography);
 
 // Change color pallets
-$app-primary: mat-palette($mat-teal, 600);
+$app-primary: mat-palette($mat-blue, A200);
 $app-accent:  mat-palette($mat-orange, A700);
-$app-warn:    mat-palette($mat-red, A400);
+$app-warn:    mat-palette($mat-teal, A400);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
