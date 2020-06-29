@@ -3,7 +3,7 @@
 LOG_FOLDER="/opt/bwhpc/es/dbdata/sacct_logs"
 
 ACCOUNT="haw"
-FIELDS="JobID,Group,User%20,cputimeraw,ExitCode,State,Start,End,ncpus,partition%12,Submit"
+FIELDS="JobID,Group,User%20,cputimeraw,ExitCode,State,Start,End,ncpus,partition%15,Submit"
 
 DATE_FORMAT='+%Y-%m-%d'
 
@@ -118,7 +118,7 @@ help_menu () {
   END DATE              Date in format YY-MM-DD up to wich the data will be gathered.
 
   EXAMPLES:
-    Gather data from 1-st on monty till yesterday:
+    Gather data from 1-st on month till yesterday:
         $ ${0}
 
     Gather data starting with 3-d of April 2020 till 23-d of May 2020:

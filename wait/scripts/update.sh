@@ -5,8 +5,8 @@ S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
 
 declare -i START_YEAR="2020"
-#declare -i YEAR=`date -d 'yesterday' '+%Y'`
-declare -i YEAR="2022"
+declare -i YEAR=`date -d 'yesterday' '+%Y'`
+#declare -i YEAR="2022"
 
 htaccess () {
   cat << EOF
@@ -40,7 +40,15 @@ install_npm_packs()
 create_data_files()
 {
   echo "Build data files"
-  ${S_DIR}/data.sh ${START_YEAR} ${YEAR}
+  declare -i month=`date -d 'yesterday' '+%m'`
+
+  data_folder="${A_DIR}/_data"
+  [[ ! -d ${data_folder} ]] && mkdir -p ${data_folder}
+  
+  # build data files for previous year only in January
+  [[ month -gt 1 ]] && declare -i start_year="2020"
+
+  python3 ${S_DIR}/get_data.py -y ${start_year}
 }
 
 create_angular_app()
@@ -53,8 +61,8 @@ create_angular_app()
 
 update()
 {
-  #[[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
-  #mkdir -p ${A_DIR}
+  [[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
+  mkdir -p ${A_DIR}
 
   create_data_files
   create_angular_app
