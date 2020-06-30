@@ -17,7 +17,7 @@ update_main()
 update_haws()
 {
   echo -e "\n=== update haw's" >> "${UPDATE_FILE}" &&
-  cd ${MD}/app_uni &&
+  cd ${MD}/app_uni2 &&
   npm run update 1>>${UPDATE_FILE} 2>&1
 }
 
@@ -31,7 +31,20 @@ update_wait()
   npm run rsync 1>>${UPDATE_FILE} 2>&1
 }
 
+set_env()
+{
+  VERSION="3.8.2"
+  BASE_DIR="/home/rsns01/staff/it/asaramet/unix/WORK/Python/${VERSION}"
+
+  if [[ -d ${BASE_DIR} ]]; then
+    export PATH="${BASE_DIR}/bin:${PATH}"
+    export LD_LIBRARY_PATH="${BASE_DIR}/lib:${LD_LIBRARY_PATH}"
+    export INCLUDE="${BASE_DIR}/include/python3.8:${INCLUDE}"
+  fi
+}
+
+set_env &&
 update_main &&
-update_haws &&
 update_wait &&
+update_haws &&
 echo -e "\n=== DONE! `date`" >> "${UPDATE_FILE}"
