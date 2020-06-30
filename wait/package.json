@@ -20,11 +20,11 @@
     "build:css": "webpack --config webpack/css.config.js && npm run cp:css",
     "prod": "npm run build && npm run build:css && webpack --config webpack/aot.config.js",
     "compile": "test -d public || mkdir public; npm run prod && npm run clean:src",
-    "sync": "chmod g=u public -R && rsync -uavrh public/ asaramet@comserver.hs-esslingen.de:/www/faculty/it/bwHPC/wait/ --delete-excluded",
     "save": "test -d public || test -d ./prod_work || rm ./prod_work -rf;  mv public prod_work || echo 'compile first!!!'",
-    "watch": "ng serve --aot --watch",
+    "sync": "chmod g=u public -R && rsync -uavrh public/ asaramet@comserver.hs-esslingen.de:/www/faculty/it/bwHPC/wait/ --delete-excluded",
+    "rsync": "npm run sync && npm run save",
     "update": "scripts/update.sh && npm run compile",
-    "rsync": "npm run sync && npm run save"
+    "watch": "ng serve --aot --watch"
   },
   "author": "Alexandru Saramet",
   "license": "ISC",

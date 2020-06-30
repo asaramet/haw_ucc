@@ -102,7 +102,7 @@ def read_data(year):
 
 # return ts list for a specific queue
 def ts_list(queue, sorted_text):
-  text = f"export const {queue} = ["
+  text = f"export const {queue}:any[] = ["
   for line in sorted_text[queue]:
     converted = convert(line)
     if converted != -1:

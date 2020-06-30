@@ -21,6 +21,17 @@ update_haws()
   npm run update 1>>${UPDATE_FILE} 2>&1
 }
 
+update_wait()
+{
+  cd "${MD}/wait"
+  echo -e "\n=== update $MD on `date` \n" > "${UPDATE_FILE}"
+  npm run update 1>>${UPDATE_FILE} 2>&1 &&
+
+  echo -e "\n=== rsync angular" >> ${UPDATE_FILE} &&
+  npm run rsync 1>>${UPDATE_FILE} 2>&1
+}
+
 update_main &&
-update_haws
+update_haws &&
+update_wait &&
 echo -e "\n=== DONE! `date`" >> "${UPDATE_FILE}"
