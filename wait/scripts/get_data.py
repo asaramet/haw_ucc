@@ -62,9 +62,13 @@ def convert(line):
   minutes = int(time[1])
   seconds = int(time[2])
 
-  if (hours + minutes + seconds) == 0: return -1
+  total = seconds + 60 * minutes + 3600 * hours
 
-  return f'[new Date({start.year}, {start.month}, {start.day}), [{hours}, {minutes}, {seconds}]]'
+  if total == 0: return -1
+  #if (hours + minutes + seconds) == 0: return -1
+
+  #return f'[new Date({start.year}, {start.month}, {start.day}), [{hours}, {minutes}, {seconds}]]'
+  return f'[new Date({start.year}, {start.month - 1}, {start.day}), {total}]'
 
 def read_data(year):
   if year == 2020:
@@ -103,7 +107,7 @@ def ts_list(queue, sorted_text):
     converted = convert(line)
     if converted != -1:
       text += convert(line) + ", "
-  text += "]\n"
+  text += "]\n\n"
   return text
 
 if __name__ == '__main__':

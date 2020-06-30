@@ -6,7 +6,7 @@ A_DIR=${MD}/src/app
 START_YEAR=${1}
 YEAR=${2}
 
-LABELS="dev_single single dev_multiple multiple fat dev_multiple_e multiple_e dev_special special gpu_4 gpu_8"
+LABELS="single multiple fat multiple_e dev_single dev_multiple dev_multiple_e dev_special special gpu_4 gpu_8"
 
 html()
 {
@@ -15,7 +15,7 @@ html()
 
   for label in ${LABELS}; do
   cat << EOF
-  <mat-tab label="${label}">
+  <mat-tab label="${label}" [disabled]="(${label}_data)">
     <ng-template matTabContent>
       <${label}-${year}></${label}-${year}>
     </ng-template>
@@ -30,15 +30,33 @@ component()
 {
   year=${1}
   cat << EOF
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ${LABELS// /,} } from '../_data/${year}'
+
 @Component({
   selector: 'year-${year}-root',
   templateUrl: './${year}.component.html'
 })
-export class Year${year}Component {
+export class Year${year}Component implements OnInit{
   constructor () {}
-}
+
 EOF
+
+  for queue in ${LABELS}; do
+    echo "  public ${queue}_data:boolean = false;"
+  done
+
+  echo "  ngOnInit() {"
+
+  for queue in ${LABELS}; do
+    cat << EOF
+    if ( ${queue} === undefined || ${queue}.length === 0 ) {
+      this.${queue}_data = true;
+    };
+EOF
+  done
+
+  echo -e "  }\n}\n"
 }
 
 router()
@@ -127,17 +145,22 @@ import { ${queue} } from '../../_data/${year}';
   templateUrl: '${queue}.component.html'
 })
 export class ${queue^}Component {
-  public type = 'Scatter';
+  public type = 'ScatterChart';
   public data = ${queue};
 
-  public columnNames = ['Date', 'Waiting Time'];
+  public columnNames = ['Date', 'Waiting time in seconds'];
 
   public options = {
-    chart: {
-      title: "Waiting time in the ${queue} queue",
-      subtitle: "scattered through ${year}"
-    },
+    title: "Waiting time in the ${queue} queue scattered through 2020",
     colors: colors.${queue},
+    vAxis: {
+      title: "Waiting time",
+      scaleType: "log",
+      ticks: [{v:1, f:"1s"}, {v:10, f:"10s"}, {v:30, f:"30s"},
+        {v:120, f:"2m"}, {v:300, f:"5m"}, {v:1800, f:"30m"}, {v:3600, f:"1h"},
+        {v:36000, f:"10h"}, {v:86400, f:"1d"}, {v:604800, f:"1w"},
+      ]
+    },
     legend: "none"
   };
 
