@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import os, sys, getopt
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 MD = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 OUT_FOLDER = os.path.join(MD, "src/app/_data")
@@ -76,7 +76,8 @@ def read_data(year):
   else:
     start_month = 1
 
-  end_month = date.today().month
+  yesterday = date.today() - timedelta(1)
+  end_month = yesterday.month
 
   # init a dictionary to collect lines from all the data files
   sorted_lines = {}
