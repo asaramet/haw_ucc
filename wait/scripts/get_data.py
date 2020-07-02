@@ -49,6 +49,9 @@ def convert(line):
   submit = datetime.fromisoformat(data[-1])
   wait = start - submit
 
+  # get number of procs
+  ntasks = data[-3]
+
   # get days to add to hours if it is the case
   if ('day' in str(wait)):
     days = wait.days
@@ -65,10 +68,8 @@ def convert(line):
   total = seconds + 60 * minutes + 3600 * hours
 
   if total == 0: return -1
-  #if (hours + minutes + seconds) == 0: return -1
 
-  #return f'[new Date({start.year}, {start.month}, {start.day}), [{hours}, {minutes}, {seconds}]]'
-  return f'[new Date({start.year}, {start.month - 1}, {start.day}), {total}]'
+  return f'["", new Date({start.year}, {start.month - 1}, {start.day}), {total}, {ntasks}]'
 
 def read_data(year):
   if year == 2020:

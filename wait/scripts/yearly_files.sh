@@ -137,7 +137,7 @@ component_q()
 
   cat << EOF
 import { Component } from '@angular/core';
-import { colors, options } from '../../_helpers/configs';
+import { colors, ticks, options } from '../../_helpers/configs';
 import { ${queue} } from '../../_data/${year}';
 
 @Component({
@@ -145,21 +145,19 @@ import { ${queue} } from '../../_data/${year}';
   templateUrl: '${queue}.component.html'
 })
 export class ${queue^}Component {
-  public type = 'ScatterChart';
+  public type = 'BubbleChart';
   public data = ${queue};
 
-  public columnNames = ['Date', 'Waiting time in seconds'];
+  public columnNames = ['Id', 'date', 'waiting time in seconds', 'number of tasks'];
 
   public options = {
     title: "Waiting time in the ${queue} queue scattered through 2020",
-    colors: colors.${queue},
+    colorAxis: { colors: colors },
+    sizeAxis: { maxSize: 5 },
     vAxis: {
       title: "Waiting time",
       scaleType: "log",
-      ticks: [{v:1, f:"1s"}, {v:10, f:"10s"}, {v:30, f:"30s"},
-        {v:120, f:"2m"}, {v:300, f:"5m"}, {v:1800, f:"30m"}, {v:3600, f:"1h"},
-        {v:36000, f:"10h"}, {v:86400, f:"1d"}, {v:604800, f:"1w"},
-      ]
+      ticks: ticks
     },
     legend: "none"
   };

@@ -28,19 +28,16 @@ EOF
 configs()
 {
   cat << EOF
-export const colors = {
-  single: ['#04B45F'],
-  dev_single: ['#00FF00'],
-  dev_multiple: ['#F7BE81'],
-  multiple: ['#FE9A2E'],
-  fat: ['#B40431'],
-  dev_multiple_e: ['#61210B'],
-  multiple_e: ['#5F4C0B'],
-  dev_special: ['#0B3861'],
-  special: ['#0404B4'],
-  gpu_4: ['#088A68'],
-  gpu_8: ['#04B4AE']
-}
+export const colors = [
+'#01DFA5','#01A9DB','#3A01DF',
+'#01DF3A','#A5DF00','#D7DF01',
+'#DBA901','#DF7401','#DF0101']
+
+export const ticks = [
+  {v:1, f:"1s"}, {v:10, f:"10s"}, {v:30, f:"30s"},
+  {v:120, f:"2m"}, {v:300, f:"5m"}, {v:1800, f:"30m"}, {v:3600, f:"1h"},
+  {v:36000, f:"10h"}, {v:86400, f:"1d"}, {v:604800, f:"1w"}
+]
 
 export const options = {
   width: 1500,
