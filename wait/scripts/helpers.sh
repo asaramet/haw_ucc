@@ -29,7 +29,7 @@ configs()
 {
   cat << EOF
 export const colors = [
-'#01DFA5','#01A9DB','#3A01DF',
+'#3A01DF', '#01A9DB', '#01DFA5', 
 '#01DF3A','#A5DF00','#D7DF01',
 '#DBA901','#DF7401','#DF0101']
 
