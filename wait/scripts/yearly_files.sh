@@ -117,7 +117,7 @@ html_q()
   cat << EOF
 <div class="tab-month">
   <div class='chart'>
-    <google-chart #chart
+    <google-chart
       [type]="type"
       [data]="data"
       [columns]="columnNames"
@@ -125,6 +125,7 @@ html_q()
       [width]="width"
       [height]="height">
     </google-chart>
+    <p>Number of tasks</p>
   </div>
 </div>
 EOF
@@ -137,7 +138,7 @@ component_q()
 
   cat << EOF
 import { Component } from '@angular/core';
-import { colors, ticks, options } from '../../_helpers/configs';
+import { options } from '../../_helpers/configs';
 import { ${queue} } from '../../_data/${year}';
 
 @Component({
@@ -152,14 +153,11 @@ export class ${queue^}Component {
 
   public options = {
     title: "Waiting time in the ${queue} queue scattered through 2020",
-    colorAxis: { colors: colors },
-    sizeAxis: { maxSize: 5 },
-    vAxis: {
-      title: "Waiting time",
-      scaleType: "log",
-      ticks: ticks
-    },
-    legend: "none"
+    titleTextStyle: options.titleTextStyle,
+    colorAxis: options.colorAxis,
+    sizeAxis: options.sizeAxis,
+    vAxis: options.vAxis,
+    hAxis: options.hAxis
   };
 
   public width = options.width;

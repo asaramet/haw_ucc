@@ -28,20 +28,62 @@ EOF
 configs()
 {
   cat << EOF
-export const colors = [
-'#3A01DF', '#01A9DB', '#01DFA5', 
+const fontName = "K2D"
+
+const colors = [
+'#3A01DF', '#01A9DB', '#01DFA5',
 '#01DF3A','#A5DF00','#D7DF01',
 '#DBA901','#DF7401','#DF0101']
 
-export const ticks = [
+const ticks = [
   {v:1, f:"1s"}, {v:10, f:"10s"}, {v:30, f:"30s"},
   {v:120, f:"2m"}, {v:300, f:"5m"}, {v:1800, f:"30m"}, {v:3600, f:"1h"},
   {v:36000, f:"10h"}, {v:86400, f:"1d"}, {v:604800, f:"1w"}
 ]
 
+const titleTextStyle = {
+  italic: false,
+  fontName: fontName,
+  fontSize: "20"
+}
+
+
+const textStyle = {
+  fontName: fontName
+}
+
+const vAxis = {
+  title: "Waiting time",
+  titleTextStyle: titleTextStyle,
+  scaleType: "log",
+  textStyle: textStyle,
+  ticks: ticks
+}
+
+const sizeAxis = { maxSize: 5 }
+
+const colorAxis = {
+  colors: colors,
+  legend: {
+    position: 'bottom',
+    textStyle: {
+      fontName: fontName
+    }
+  }
+}
+
+const hAxis = {
+  textStyle: textStyle
+}
+
 export const options = {
   width: 1500,
-  height: 650,
+  height: 600,
+  titleTextStyle: titleTextStyle,
+  colorAxis: colorAxis,
+  sizeAxis: sizeAxis,
+  vAxis: vAxis,
+  hAxis: hAxis
 }
 EOF
 }

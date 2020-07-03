@@ -100,10 +100,15 @@ footer {
 }
 
 .chart {
+  align-items: center;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
 
+  p {
+    font-family: $title-font-family;
+    font-size: 20px;
+  }
 }
 
 .users-table {
