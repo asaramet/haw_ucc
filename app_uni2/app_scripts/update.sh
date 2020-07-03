@@ -2,7 +2,7 @@
 
 MD=`dirname $(readlink -f $0)`
 prefixes='aa as es hf hk hn hr hs ht hu ro'
-host="asaramet@comserver.hs-esslingen.de"
+host="comserver.hs-esslingen.de"
 
 check_prefix()
 {

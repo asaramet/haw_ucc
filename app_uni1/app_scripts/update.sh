@@ -5,7 +5,7 @@ NG_DATA=${MD}/../../bwUniCluster1/scripts/ngData
 #prefixes='aa hu'
 prefixes='aa as hf hk hn hr hs ht hu ro'
 validPrefixes='aa as es hf hk hn hr hs ht hu ro'
-host="asaramet@comserver.hs-esslingen.de"
+host="comserver.hs-esslingen.de"
 
 clean () {
   echo "Clean all!"
