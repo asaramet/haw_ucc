@@ -125,7 +125,7 @@ html_q()
       [width]="width"
       [height]="height">
     </google-chart>
-    <p>Number of tasks</p>
+    <p>Tasks</p>
   </div>
 </div>
 EOF
