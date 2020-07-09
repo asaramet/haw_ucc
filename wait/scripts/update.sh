@@ -44,7 +44,7 @@ create_data_files()
 
   data_folder="${A_DIR}/_data"
   [[ ! -d ${data_folder} ]] && mkdir -p ${data_folder}
-  
+
   # build data files for previous year only in January
   [[ month -gt 1 ]] && declare -i start_year="2020"
 
@@ -57,6 +57,7 @@ create_angular_app()
   ${S_DIR}/app_files.sh ${START_YEAR} ${YEAR}
   ${S_DIR}/helpers.sh
   ${S_DIR}/yearly_files.sh ${START_YEAR} ${YEAR}
+  ${S_DIR}/top_files.sh ${START_YEAR} ${YEAR}
 }
 
 update()

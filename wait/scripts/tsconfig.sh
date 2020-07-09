@@ -26,6 +26,7 @@ EOF
 
   while [[ ${START_YEAR} -le ${YEAR} ]]; do
     echo -e "    \"src/app/${START_YEAR}/${START_YEAR}.module.ts\","
+    echo -e "    \"src/app/top/${START_YEAR}/${START_YEAR}.module.ts\","
     START_YEAR=$(( ${START_YEAR} + 1 ))
   done
 

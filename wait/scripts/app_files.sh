@@ -15,21 +15,40 @@ ROOTER="${A_DIR}/app.router.module.ts"
 
 html()
 {
-  start_year=${1}
+  START_YEAR=${1}
   year=${2}
   cat << EOF
 <section class="mat-typography">
   <h1 class="title mat-display-1">{{title}}</h1>
   <nav class="navs">
-    <div>
+    <div [hidden]="(showTop)">
 EOF
 
+  start_year=${START_YEAR}
   while [[ ${start_year} -le ${year} ]]; do
     echo "      <button mat-button color='primary' routerLink='${start_year}'>${start_year}</button>"
     start_year=$(( ${start_year} + 1 ))
   done
 
+  echo -e '    </div>\n    <div [hidden]="!(showTop)">'
+
+  start_year=${START_YEAR}
+  while [[ ${start_year} -le ${year} ]]; do
+    echo "    <button mat-button color='accent' routerLink='top/${start_year}'>${start_year}</button>"
+    start_year=$(( ${start_year} + 1 ))
+  done
+
   cat << EOF
+    </div>
+    <div [hidden]="!(showTop)">
+      <button mat-button color="primary" routerLink="${year}" (click)="toggleTop()">
+        All
+      </button>
+    </div>
+    <div [hidden]="(showTop)">
+      <button mat-button color="accent" routerLink="top" (click)="toggleTop()">
+        Top Users
+      </button>
     </div>
   </nav>
   <router-outlet></router-outlet>
@@ -51,9 +70,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   constructor () {}
   public title:string = "Waiting time in different job queues on bwUniCluster 2.0 for HAW users";
-  public showUsers:boolean = false;
-  toggleUsers() {
-    this.showUsers = !this.showUsers;
+  public showTop:boolean = false;
+  toggleTop() {
+    this.showTop = !this.showTop;
   }
 }
 EOF
@@ -102,11 +121,13 @@ EOF
 
   while [[ ${start_year} -le ${year} ]]; do
     echo "  { path: '${start_year}', loadChildren: './${start_year}/${start_year}.module#Year${start_year}Module' },"
-    echo "  { path: '', redirectTo: '${start_year}', pathMatch: 'full'},"
+    echo "  { path: 'top/${start_year}', loadChildren: './top/${start_year}/${start_year}.module#Top${start_year}Module' },"
     start_year=$(( ${start_year} + 1 ))
   done
 
   cat << EOF
+  { path: 'top', redirectTo: 'top/${year}', pathMatch: 'full' },
+  { path: '', redirectTo: '${year}', pathMatch: 'full'},
 ]
 @NgModule({
   imports: [
