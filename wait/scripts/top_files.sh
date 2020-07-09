@@ -8,12 +8,26 @@ A_DIR="${MD}/src/app/top"
 declare -i START_YEAR="${1}"
 declare -i YEAR="${2}"
 
+#LABELS="single multiple multiple_e fat dev_single dev_multiple dev_multiple_e dev_special special gpu_4 gpu_8"
+LABELS="single multiple fat"
+
 html()
 {
   declare -i year=${1}
-  cat << EOF
-<h1>Unique HAW users in ${year}</h1>
+
+  echo '<mat-tab-group mat-align-tabs="end">'
+
+  for label in ${LABELS}; do
+    cat << EOF
+    <mat-tab label="${label}" [disabled]="(${label}_data)">
+      <ng-template matTabContent>
+        <${label}-${year}></${label}-${year}>
+      </ng-template>
+    </mat-tab>
 EOF
+  done
+
+  echo "</mat-tab-group>"
 }
 
 component()
@@ -21,6 +35,7 @@ component()
   declare -i year=${1}
   cat << EOF
 import { Component, OnInit } from '@angular/core';
+import { ${LABELS// /,} } from '../../_data/${year}'
 
 @Component({
   selector: 'top-${year}-root',
@@ -29,10 +44,23 @@ import { Component, OnInit } from '@angular/core';
 export class Top${year}Component implements OnInit {
   constructor() {}
 
-  ngOnInit () {
-  }
-}
 EOF
+
+  for label in ${LABELS}; do
+    echo "  public ${label}_data:boolean = false;"
+  done
+
+  echo -e "\n  ngOnInit () {"
+
+  for label in ${LABELS}; do
+    cat << EOF
+    if ( ${label} === undefined || ${label}.length === 0 ) {
+      this.${label}_data = true;
+    };
+EOF
+  done
+
+  echo -e "  }\n}"
 }
 
 module()
@@ -41,18 +69,28 @@ module()
   cat << EOF
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material';
-import { MatSortModule } from '@angular/material/sort';
-import { MatButtonModule } from '@angular/material/button';
-import { GoogleChartsModule } from 'angular-google-charts';
+import { MatTabsModule } from '@angular/material';
 
+EOF
+
+  for label in ${LABELS}; do
+    echo "import { ${label^}Module } from './${label}/${label}.module';"
+  done
+
+  cat << EOF
 import { Top${year}RouterModule } from './${year}.router';
 import { Top${year}Component } from './${year}.component';
 @NgModule({
   imports: [
+EOF
+
+  for label in ${LABELS}; do
+    echo "    ${label^}Module,"
+  done
+
+  cat << EOF
     Top${year}RouterModule,
-    MatTableModule, MatSortModule,
-    MatButtonModule, GoogleChartsModule,
+    MatTabsModule,
     CommonModule
   ],
   declarations: [
@@ -72,6 +110,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { Top${year}Component } from './${year}.component';
+
 const routes: Routes = [
   { path: '', component: Top${year}Component}
 ];
@@ -80,6 +119,84 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class Top${year}RouterModule {}
+EOF
+}
+
+html_c()
+{
+  cat << EOF
+<div class="tab-month">
+  <div class='chart'>
+    <google-chart
+      [type]="type"
+      [data]="data"
+      [columns]="columnNames"
+      [options]="options"
+      [width]="width"
+      [height]="height">
+    </google-chart>
+    <p>Tasks</p>
+  </div>
+</div>
+EOF
+}
+
+component_c()
+{
+  declare -i year=${1}
+  queue=${2}
+
+  cat << EOF
+import { Component } from '@angular/core';
+import { options } from '../../../_helpers/configs';
+import { ${queue} } from '../../../_data/${year}';
+
+@Component({
+  selector: '${queue}-${year}',
+  templateUrl: '${queue}.component.html'
+})
+export class ${queue^}Component {
+  public type = 'BubbleChart';
+  public data = ${queue};
+
+  public columnNames = ['Id', 'date', 'waiting time in seconds', 'number of tasks'];
+
+  public options = {
+    title: "Waiting time in the ${queue} queue scattered through ${year}",
+    titleTextStyle: options.titleTextStyle,
+    colorAxis: options.colorAxis,
+    sizeAxis: options.sizeAxis,
+    vAxis: options.vAxis,
+    hAxis: options.hAxis
+  };
+
+  public width = options.width;
+  public height = options.height;
+}
+EOF
+}
+
+module_c()
+{
+  queue=${1}
+
+  cat << EOF
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { GoogleChartsModule } from 'angular-google-charts';
+import { MatCardModule } from '@angular/material';
+
+
+import { ${queue^}Component } from './${queue}.component';
+@NgModule({
+  declarations: [ ${queue^}Component ],
+  imports: [
+    CommonModule,
+    MatCardModule,
+    GoogleChartsModule ],
+  exports: [ ${queue^}Component ]
+})
+export class ${queue^}Module {}
 EOF
 }
 
@@ -92,6 +209,16 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   module ${START_YEAR} > "${out_folder}/${START_YEAR}.module.ts"
   component ${START_YEAR} > "${out_folder}/${START_YEAR}.component.ts"
   html ${START_YEAR} > "${out_folder}/${START_YEAR}.component.html"
+
+  for label in ${LABELS}; do
+    folder_c="${out_folder}/${label}"
+    [[ -d ${folder_c} ]] && rm -rf ${folder_c}
+    mkdir -p ${folder_c}
+
+    html_c > "${folder_c}/${label}.component.html"
+    component_c ${START_YEAR} ${label} > "${folder_c}/${label}.component.ts"
+    module_c ${label} > "${folder_c}/${label}.module.ts"
+  done
 
   START_YEAR=$(( ${START_YEAR} + 1 ))
 done
