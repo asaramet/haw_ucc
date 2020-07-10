@@ -49,6 +49,7 @@ create_data_files()
   [[ month -gt 1 ]] && declare -i start_year="2020"
 
   python3 ${S_DIR}/get_data.py -y ${start_year}
+  python3 ${S_DIR}/get_top_data.py -y ${start_year}
 }
 
 create_angular_app()

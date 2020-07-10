@@ -32,7 +32,7 @@ def main(argv):
     # sort text into a dict once
     sorted_text = read_data(start_year)
 
-    data_file = os.path.join(OUT_FOLDER, f"{start_year}.ts")
+    data_file = os.path.join(OUT_FOLDER, f"top_{start_year}.ts")
 
     with open(data_file, 'w') as f:
       for queue in PARTITIONS:
@@ -40,11 +40,33 @@ def main(argv):
 
     start_year += 1
 
+# return top users in format [(user_id, nr_of_lines)]
+def top_users(sorted_data, queue, nr_users=5):
+  users = {}
+  for line in (sorted_data[queue]):
+    user = line.split()[2]
+    if user in users.keys():
+      users[user] += 1
+    else:
+      users[user] = 1
+
+  # get top users in format [(user_id, nr_of_lines)]
+  top = sorted(users.items(), key = lambda x: x[1], reverse = True)[:nr_users]
+
+  return [x[0] for x in top] # return only users
+
 # convert data line to ts list
-def convert(line):
+def convert(line, users=[]):
+  # users are returned from top_users() function
+  if users == []: return -1
+
   data = line.split()
   if data[-1] == "Unknown" or data[6] == "Unknown":
     return -1
+
+  user = data[2]
+  if user not in users: return -1 # if user not in users ignore everything
+
   start = datetime.fromisoformat(data[6])
   submit = datetime.fromisoformat(data[-1])
   wait = start - submit
@@ -69,7 +91,7 @@ def convert(line):
 
   if total == 0: return -1
 
-  return f'["", new Date({start.year}, {start.month - 1}, {start.day}), {total}, {ntasks}]'
+  return f'["", new Date({start.year}, {start.month - 1}, {start.day}), {total}, "{user}", {ntasks}]'
 
 def read_data(year):
   if year == 2020:
@@ -105,8 +127,9 @@ def read_data(year):
 # return ts list for a specific queue
 def ts_list(queue, sorted_text):
   text = f"export const {queue}:any[] = ["
+  users = top_users(sorted_text, queue)
   for line in sorted_text[queue]:
-    converted = convert(line)
+    converted = convert(line, users)
     if converted != -1:
       text += converted + ", "
   text += "]\n\n"

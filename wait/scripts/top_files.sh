@@ -8,8 +8,7 @@ A_DIR="${MD}/src/app/top"
 declare -i START_YEAR="${1}"
 declare -i YEAR="${2}"
 
-#LABELS="single multiple multiple_e fat dev_single dev_multiple dev_multiple_e dev_special special gpu_4 gpu_8"
-LABELS="single multiple fat"
+LABELS="single multiple multiple_e fat dev_single dev_multiple dev_multiple_e dev_special special gpu_4 gpu_8"
 
 html()
 {
@@ -135,7 +134,6 @@ html_c()
       [width]="width"
       [height]="height">
     </google-chart>
-    <p>Tasks</p>
   </div>
 </div>
 EOF
@@ -148,8 +146,8 @@ component_c()
 
   cat << EOF
 import { Component } from '@angular/core';
-import { options } from '../../../_helpers/configs';
-import { ${queue} } from '../../../_data/${year}';
+import { topOptions } from '../../../_helpers/configs';
+import { ${queue} } from '../../../_data/top_${year}';
 
 @Component({
   selector: '${queue}-${year}',
@@ -159,19 +157,18 @@ export class ${queue^}Component {
   public type = 'BubbleChart';
   public data = ${queue};
 
-  public columnNames = ['Id', 'date', 'waiting time in seconds', 'number of tasks'];
+  public columnNames = ['Id', 'date', 'waiting time in seconds', 'user', 'number of CPU tasks'];
 
   public options = {
-    title: "Waiting time in the ${queue} queue scattered through ${year}",
-    titleTextStyle: options.titleTextStyle,
-    colorAxis: options.colorAxis,
-    sizeAxis: options.sizeAxis,
-    vAxis: options.vAxis,
-    hAxis: options.hAxis
+    title: "Top 5 users waiting time in the ${queue} queue scattered through ${year}",
+    titleTextStyle: topOptions.titleTextStyle,
+    sizeAxis: topOptions.sizeAxis,
+    vAxis: topOptions.vAxis,
+    hAxis: topOptions.hAxis
   };
 
-  public width = options.width;
-  public height = options.height;
+  public width = topOptions.width;
+  public height = topOptions.height;
 }
 EOF
 }

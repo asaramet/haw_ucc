@@ -125,7 +125,7 @@ html_q()
       [width]="width"
       [height]="height">
     </google-chart>
-    <p>Tasks</p>
+    <p>CPU Tasks</p>
   </div>
 </div>
 EOF
@@ -149,7 +149,7 @@ export class ${queue^}Component {
   public type = 'BubbleChart';
   public data = ${queue};
 
-  public columnNames = ['Id', 'date', 'waiting time in seconds', 'number of tasks'];
+  public columnNames = ['Id', 'date', 'waiting time in seconds', 'number of CPU tasks'];
 
   public options = {
     title: "Waiting time in the ${queue} queue scattered through 2020",

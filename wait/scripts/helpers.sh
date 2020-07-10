@@ -60,8 +60,6 @@ const vAxis = {
   ticks: ticks
 }
 
-const sizeAxis = { maxSize: 5 }
-
 const colorAxis = {
   colors: colors,
   legend: {
@@ -81,7 +79,16 @@ export const options = {
   height: 600,
   titleTextStyle: titleTextStyle,
   colorAxis: colorAxis,
-  sizeAxis: sizeAxis,
+  sizeAxis: { maxSize: 5 },
+  vAxis: vAxis,
+  hAxis: hAxis
+}
+
+export const topOptions = {
+  width: 1500,
+  height: 600,
+  titleTextStyle: titleTextStyle,
+  sizeAxis: { maxSize: 10 },
   vAxis: vAxis,
   hAxis: hAxis
 }
