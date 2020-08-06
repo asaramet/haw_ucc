@@ -29,10 +29,10 @@
   "author": "Alexandru Saramet",
   "license": "ISC",
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.26",
+    "@angular-devkit/build-angular": "^0.803.29",
     "@angular/animations": "^8.2.14",
     "@angular/cdk": "^8.2.3",
-    "@angular/cli": "^8.3.26",
+    "@angular/cli": "^8.3.29",
     "@angular/common": "^8.2.14",
     "@angular/compiler": "^8.2.14",
     "@angular/compiler-cli": "^8.2.14",
@@ -42,24 +42,24 @@
     "@angular/platform-browser": "^8.2.14",
     "@angular/platform-browser-dynamic": "^8.2.14",
     "@angular/router": "^8.2.14",
-    "@ngtools/webpack": "^8.3.26",
+    "@ngtools/webpack": "^8.3.29",
     "@types/core-js": "^2.5.3",
-    "angular-google-charts": "*",
+    "angular-google-charts": "^1.1.4",
     "compression-webpack-plugin": "^3.1.0",
     "core-js": "^3.6.4",
-    "css-loader": "^3.4.2",
-    "extract-loader": "^5.0.1",
+    "css-loader": "^3.6.0",
+    "extract-loader": "^5.1.0",
     "file-loader": "^5.1.0",
     "html-loader": "^1.1.0",
-    "node-sass": "^4.13.1",
-    "rxjs": "^6.5.5",
+    "node-sass": "^4.14.1",
+    "rxjs": "^6.6.2",
     "sass-loader": "^8.0.2",
+    "typescript": "^3.5.3",
     "uglifyjs-webpack-plugin": "^2.2.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "typescript": "^3.5.3",
     "zone.js": "^0.9.1"
   }
 }

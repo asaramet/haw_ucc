@@ -40,7 +40,8 @@ install_npm_packs()
 create_data_files()
 {
   echo "Build data files"
-  declare -i month=`date -d 'yesterday' '+%m'`
+  month=`date -d 'yesterday' '+%m'`
+  [[ ${month} == "08" ]] && month="8"
 
   data_folder="${A_DIR}/_data"
   [[ ! -d ${data_folder} ]] && mkdir -p ${data_folder}
