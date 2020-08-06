@@ -122,7 +122,7 @@ EOF
 write_component()
 {
   declare -i year=${1}
-  declare -i end_month=${2}
+  end_month=${2}
 
   declare -i start_month="1"
   [[ ${year} -eq "2020" ]] && declare -i start_month="3"
@@ -236,6 +236,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
 
   END_MONTH="12"
   [[ ${START_YEAR} -eq ${YEAR} ]] && END_MONTH=`date -d 'yesterday' '+%m'`
+  [[ ${END_MONTH} == "08" ]] && END_MONTH="8"
   write_component ${START_YEAR} ${END_MONTH} > "${out_folder}/${START_YEAR}.component.ts"
 
   START_YEAR=$(( ${START_YEAR} + 1 ))

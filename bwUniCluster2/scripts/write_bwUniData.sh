@@ -8,17 +8,19 @@ OUT_FOLDER="${MD}/src/app/_data"
 
 PREFIXES='aa as es hf hk hn hr hs ht hu ro'
 
-declare -i MONTH=`date -d 'yesterday' '+%m'` # doing from the 2-nd of every month
+MONTH=`date -d 'yesterday' '+%m'` # doing from the 2-nd of every month
+if [[ ${MONTH} == "08" ]]; then # avoid octals
+  MONTH="8"
+fi
+
 declare -i YEAR=`date -d 'yesterday' '+%Y'`
 
 collect_data ()
 {
-  declare -i year=${1}
-  declare -i month=${2}
+  year=${1}
+  month=${2}
 
-  mnt=${month}
-  [[ ${month} -lt 10 ]] && mnt="0${month}"
-  data_file="${DATA_FOLDER}/${year}-${mnt}.log"
+  data_file="${DATA_FOLDER}/${year}-${month}.log"
 
   declare -i total="0"
   for prefix in ${PREFIXES}; do
@@ -69,8 +71,8 @@ write_body_total()
 
 write_ts ()
 {
-  declare -i year=${1}
-  declare -i last_month=${2}
+  year=${1}
+  last_month=${2}
 
   TEMP_FILE="${DATA_FOLDER}/temp.txt"
   [[ -f ${TEMP_FILE} ]] && rm -f ${TEMP_FILE}

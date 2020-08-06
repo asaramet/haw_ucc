@@ -120,11 +120,12 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   OUTPUT_DIR="${A_DIR}/${START_YEAR}"
   echo "... Create ${OUTPUT_DIR} months"
 
-  declare -i end_month=`date -d 'yesterday' '+%m'`
+  end_month=`date -d 'yesterday' '+%m'`
+  [[ ${end_month} == "08" ]] && end_month="8"
   [[ ${START_YEAR} -lt ${YEAR} ]] && end_month="12"
 
-  declare -i start_month="1"
-  [[ ${START_YEAR} -eq "2020" ]] && declare -i start_month="3"
+  start_month="1"
+  [[ ${START_YEAR} -eq "2020" ]] && start_month="3"
 
   while [[ ${start_month} -le  ${end_month} ]]; do
     month_folder="${OUTPUT_DIR}/${start_month}"

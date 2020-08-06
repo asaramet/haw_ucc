@@ -6,7 +6,13 @@ MD="`dirname $(readlink -f ${0})`/.."
 OUT_FOLDER="${MD}/src/app/_data"
 
 declare -i YEAR=`date -d 'yesterday' '+%Y'`
-declare -i END_MONTH=`date -d 'yesterday' '+%m'`
+
+END_MONTH=`date -d 'yesterday' '+%m'`
+if [[ ${END_MONTH} == "08" ]]; then # avoid octals
+  END_MONTH="8"
+else
+  declare -i END_MONTH=`date -d 'yesterday' '+%m'`
+fi
 
 declare -i START_YEAR="2020"
 

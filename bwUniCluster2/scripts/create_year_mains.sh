@@ -2,7 +2,6 @@
 
 # Crate YEARly: YEAR.component.* YEAR.module.ts YEAR.router.ts
 
-
 MD="`dirname $(readlink -f ${0})`/.."
 A_DIR=${MD}/src/app
 
@@ -11,11 +10,11 @@ YEAR=`date -d 'yesterday' '+%Y'`
 
 write_html()
 {
-  declare -i year=${1}
+  year=${1}
   [[ ${year} -eq 0 ]] && echo "missing YEAR to create html for." && exit 1
 
-  declare -i end_month=${2}
-  [[ ${end_month} -eq 0 ]] && echo "missing END MONTH to create html for." && exit 1
+  end_month=${2}
+  [[ -z ${end_month} ]] && echo "missing END MONTH to create html for." && exit 1
 
   declare -i start_month="1"
   [[ ${year} == "2020" ]] && declare -i start_month="3"
@@ -90,8 +89,8 @@ write_module()
   declare -i year=${1}
   [[ ${year} -eq 0 ]] && echo "missing YEAR to create module for." && exit 1
 
-  declare -i end_month=${2}
-  [[ ${end_month} -eq 0 ]] && echo "missing END MONTH to create module for." && exit 1
+  end_month=${2}
+  [[ -z ${end_month} ]] && echo "missing END MONTH to create module for." && exit 1
 
   declare -i start_month="1"
   [[ ${year} == "2020" ]] && declare -i start_month="3"
@@ -121,6 +120,7 @@ EOF
 
   declare -i start_month="1"
   [[ ${year} == "2020" ]] && declare -i start_month="3"
+
   while [[ ${start_month} -le ${end_month} ]]; do
     echo "    Month${start_month}Module,"
     start_month=$(( ${start_month} + 1 ))
@@ -147,7 +147,9 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   write_component ${START_YEAR} > "${OUTPUT_DIR}/${START_YEAR}.component.ts"
   write_router ${START_YEAR} > "${OUTPUT_DIR}/${START_YEAR}.router.ts"
 
-  declare -i END_MONTH=`date -d 'yesterday' '+%m'`
+  END_MONTH=`date -d 'yesterday' '+%m'`
+  [[ ${END_MONTH} == "08" ]] && END_MONTH="8"
+  
   [[ ${START_YEAR} -lt ${YEAR} ]] && END_MONTH="12"
 
   write_html ${START_YEAR} ${END_MONTH} > "${OUTPUT_DIR}/${START_YEAR}.component.html"

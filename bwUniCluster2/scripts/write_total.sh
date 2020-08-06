@@ -34,14 +34,16 @@ echo_data()
 write_ts()
 {
   # usage write_ts <START_MONTH> <END_MONTH>
-  declare -i year=${1}
-  declare -i end_month=${2}
+  year=${1}
+  end_month=${2}
+
+  [[ ${end_month} == "08" ]] && end_month="8"
 
   [[ ${year} -lt ${START_YEAR} ]] && echo "Wrong year specified: ${year}" && exit 1
-  [[ ${end_month} -eq 0 ]] && echo "Not enough arguments specified!" && exit 1
+  [[ -z ${end_month} ]] && echo "Not enough arguments specified!" && exit 1
 
-  declare -i start_month="1"
-  [[ ${year} -eq 2020 ]] && declare -i start_month="3"
+  start_month="1"
+  [[ ${year} -eq 2020 ]] && start_month="3"
 
   echo "export const total_uca_${year} = ["
 
@@ -60,5 +62,5 @@ while [[ ${START_YEAR} -lt ${YEAR} ]]; do
   START_YEAR=$(( ${START_YEAR} + 1 ))
 done
 
-declare -i END_MONTH=`date -d 'yesterday' '+%m'`
+END_MONTH=`date -d 'yesterday' '+%m'`
 write_ts ${YEAR} ${END_MONTH} >> ${OUT_FILE}
