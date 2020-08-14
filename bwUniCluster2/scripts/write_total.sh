@@ -37,7 +37,7 @@ write_ts()
   year=${1}
   end_month=${2}
 
-  [[ ${end_month} == "08" ]] && end_month="8"
+  end_month="${end_month#'0'}" # remove '0' prefix
 
   [[ ${year} -lt ${START_YEAR} ]] && echo "Wrong year specified: ${year}" && exit 1
   [[ -z ${end_month} ]] && echo "Not enough arguments specified!" && exit 1

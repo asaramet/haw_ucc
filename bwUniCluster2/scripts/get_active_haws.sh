@@ -34,7 +34,7 @@ read_monthly_logs()
 {
   declare -i year=${1}
   end_month=${2}
-  [[ ${end_month} == "08" ]] && end_month="8"
+  end_month="${end_month#'0'}" # remove prefix '0'
 
   declare -i start_month="1"
   [[ ${year} -eq "2020" ]] && declare -i start_month="3"

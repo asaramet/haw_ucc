@@ -41,7 +41,7 @@ create_data_files()
 {
   echo "Build data files"
   month=`date -d 'yesterday' '+%m'`
-  [[ ${month} == "08" ]] && month="8"
+  month="${month#'0'}" # remove '0' prefix
 
   data_folder="${A_DIR}/_data"
   [[ ! -d ${data_folder} ]] && mkdir -p ${data_folder}

@@ -236,7 +236,8 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
 
   END_MONTH="12"
   [[ ${START_YEAR} -eq ${YEAR} ]] && END_MONTH=`date -d 'yesterday' '+%m'`
-  [[ ${END_MONTH} == "08" ]] && END_MONTH="8"
+  END_MONTH="${END_MONTH#'0'}" # remove '0' prefix
+  
   write_component ${START_YEAR} ${END_MONTH} > "${out_folder}/${START_YEAR}.component.ts"
 
   START_YEAR=$(( ${START_YEAR} + 1 ))

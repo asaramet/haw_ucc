@@ -148,8 +148,8 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   write_router ${START_YEAR} > "${OUTPUT_DIR}/${START_YEAR}.router.ts"
 
   END_MONTH=`date -d 'yesterday' '+%m'`
-  [[ ${END_MONTH} == "08" ]] && END_MONTH="8"
-  
+  END_MONTH="${END_MONTH#'0'}"
+
   [[ ${START_YEAR} -lt ${YEAR} ]] && END_MONTH="12"
 
   write_html ${START_YEAR} ${END_MONTH} > "${OUTPUT_DIR}/${START_YEAR}.component.html"

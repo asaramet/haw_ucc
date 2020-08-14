@@ -9,9 +9,7 @@ OUT_FOLDER="${MD}/src/app/_data"
 PREFIXES='aa as es hf hk hn hr hs ht hu ro'
 
 MONTH=`date -d 'yesterday' '+%m'` # doing from the 2-nd of every month
-if [[ ${MONTH} == "08" ]]; then # avoid octals
-  MONTH="8"
-fi
+MONTH="${MONTH#'0'}" # remove '0' prefix
 
 declare -i YEAR=`date -d 'yesterday' '+%Y'`
 

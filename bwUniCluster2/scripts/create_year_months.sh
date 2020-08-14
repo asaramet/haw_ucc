@@ -121,7 +121,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   echo "... Create ${OUTPUT_DIR} months"
 
   end_month=`date -d 'yesterday' '+%m'`
-  [[ ${end_month} == "08" ]] && end_month="8"
+  end_month="${end_month#'0'}"
   [[ ${START_YEAR} -lt ${YEAR} ]] && end_month="12"
 
   start_month="1"
