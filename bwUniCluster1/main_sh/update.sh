@@ -120,13 +120,13 @@ update () {
   [[ ! -f ${A_DIR}/bwUniCluster1/tsconfig-prod-aot.json ]] &&
   python3 ${S_DIR}/create_tsconfig.py -y ${CURRENT_YEAR}
   ${S_DIR}/copy_stds.sh
-  
+
   python3 ${S_DIR}/total.py -o ${A_DIR}/_data/total.ts
   PUBLIC_DIR=${A_DIR}/../../public
   [[ ! -d ${PUBLIC_DIR} ]] && mkdir ${PUBLIC_DIR}
   htaccess > ${PUBLIC_DIR}/.htaccess
 
-  install_npm
+  #install_npm
 }
 
 help_menu () {

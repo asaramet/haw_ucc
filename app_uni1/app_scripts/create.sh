@@ -14,7 +14,8 @@ create () {
   year=${2}
 
   declare -i currentYear=`date +%Y`
-  declare -i currentMonth=`date +%m`
+  currentMonth=`date +%m`
+  currentMonth="${currentMonth#'0'}" # remove '0' prefix
 
   [[ ${currentYear} -gt "2020" ]] && declare -i currentYear="2020"
   [[ ${currentYear} -eq "2020" ]] && declare -i currentMonth="3"

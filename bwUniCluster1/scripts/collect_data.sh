@@ -20,10 +20,10 @@ sync_data () {
   statsFolder="${dataFolder}/statistics"
   [[ ! -d ${statsFolder} ]] && mkdir -p ${statsFolder}
 
-  syncHost=${bwUniCluster_username}@bwUniCluster.scc.kit.edu
+  #syncHost=${bwUniCluster_username}@bwUniCluster.scc.kit.edu
   #rsync -auv ${syncHost}:/opt/moab/stats/feedback/${year}*.log ${dataFolder}/${year} &&
   rsync -auv asaramet@comserver.hs-esslingen.de:${dataFolder}/${year}/${year}*.log ${dataFolder}/${year} &&
-  rsync -auv ${syncHost}:/opt/bwhpc/common/admin/statistics/uc1_knotenauslastung_standorte.csv ${statsFolder} &&
+  #rsync -auv ${syncHost}:/opt/bwhpc/common/admin/statistics/uc1_knotenauslastung_standorte.csv ${statsFolder} &&
   echo "DONE synchronizing!"
 }
 
