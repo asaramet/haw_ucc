@@ -27,7 +27,7 @@ write_module_rooter()
   cat > ${module_file} << EOF
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleChartsModule } from 'angular-google-charts';
@@ -129,7 +129,8 @@ write_component()
 
   cat << EOF
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { DataObject, YearlyUniUsers } from '../../_helpers/users.methods';
 import * as db from '../../_data/${year}';
@@ -237,7 +238,7 @@ while [[ ${START_YEAR} -le ${YEAR} ]]; do
   END_MONTH="12"
   [[ ${START_YEAR} -eq ${YEAR} ]] && END_MONTH=`date -d 'yesterday' '+%m'`
   END_MONTH="${END_MONTH#'0'}" # remove '0' prefix
-  
+
   write_component ${START_YEAR} ${END_MONTH} > "${out_folder}/${START_YEAR}.component.ts"
 
   START_YEAR=$(( ${START_YEAR} + 1 ))

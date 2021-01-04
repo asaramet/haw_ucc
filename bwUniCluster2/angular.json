@@ -36,8 +36,7 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "fileReplacements": [
-                {
-                }
+                {}
               ]
             }
           }
@@ -120,5 +119,8 @@
     "@schematics/angular:directive": {
       "prefix": "app"
     }
+  },
+  "cli": {
+    "analytics": "55cc560b-d758-4357-ae3c-e5d1b1d9cbed"
   }
 }

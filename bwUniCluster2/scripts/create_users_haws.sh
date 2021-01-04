@@ -56,7 +56,8 @@ write_component()
 
   cat << EOF
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatSort } from '@angular/material/sort';
 
 import { DataObject } from '../../../_helpers/users.methods';
 import { uniPrefixes } from '../../../_helpers/uni_prefixes';

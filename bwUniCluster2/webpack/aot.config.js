@@ -11,7 +11,7 @@ const configPath = path.resolve(__dirname, '../webpack');
 module.exports =  {
   mode: "production",
   entry: [
-    './public/aot/src/main.aot.js'
+    './public/main.js'
   ],
 
   output: {

@@ -333,13 +333,12 @@ while [[ ${START_YEAR} -le ${END_YEAR} ]]; do
   write_main_component ${START_YEAR} > "${out_folder}/${START_YEAR}.component.ts"
   write_router_module ${START_YEAR} ${out_folder}
 
-  declare -i found_flag="0" # flag to check if component is found
+  haw_folder="${out_folder}/${PREFIX}"
+  [[ ! -d ${haw_folder} ]] && mkdir -p ${haw_folder}
+
   while read -r line; do
     read -ra ADDR <<< ${line}
     if [[ ${ADDR[0]} -eq ${START_YEAR} && ${ADDR[2]} == ${PREFIX} ]]; then
-      declare -i found_flag="1"
-      haw_folder="${out_folder}/${PREFIX}"
-      [[ ! -d ${haw_folder} ]] && mkdir -p ${haw_folder}
 
       declare -i month=${ADDR[1]}
       write_haw_html > "${haw_folder}/${month}.component.html"
@@ -347,7 +346,6 @@ while [[ ${START_YEAR} -le ${END_YEAR} ]]; do
     fi
   done < ${TMP_FILE}
 
-  [[ ${found_flag} -gt "0" ]] &&
   write_haw_html > "${haw_folder}/year.component.html" &&
   write_haw_component ${START_YEAR} > "${haw_folder}/year.component.ts"
 

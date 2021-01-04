@@ -45,7 +45,7 @@ write_module()
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleChartsModule } from 'angular-google-charts';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 
 import { Month${month}Component } from './${month}.component';
