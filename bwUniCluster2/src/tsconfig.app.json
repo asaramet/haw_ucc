@@ -1,7 +1,6 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../public/aot",
     "module": "es2015",
     "baseUrl": "",
     "typeRoots": [ "../node_modules/@types" ],

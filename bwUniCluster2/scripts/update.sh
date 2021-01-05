@@ -3,9 +3,7 @@
 MD="`dirname $(readlink -f ${0})`/.."
 S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
-
-[[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
-mkdir -p ${A_DIR}
+PUBLIC_DIR=${MD}/public
 
 htaccess () {
   cat << EOF
@@ -55,7 +53,6 @@ create_prod_files()
 {
   ${S_DIR}/create_tsconfig.sh
 
-  PUBLIC_DIR=${MD}/public
   [[ ! -d ${PUBLIC_DIR} ]] && mkdir -p ${PUBLIC_DIR}
   htaccess > "${PUBLIC_DIR}/.htaccess"
 }
@@ -72,6 +69,10 @@ install_npm_packs()
 
 update()
 {
+  [[ -d ${PUBLIC_DIR} ]] && rm -rf ${PUBLIC_DIR}
+  [[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
+
+  mkdir -p ${A_DIR}
   create_data_files
   create_main_app
   create_users_folder
@@ -87,6 +88,7 @@ help_menu () {
 
   OPTIONS:
     -h | --help         Show this message
+    -p | --prod         Create only prod specific files
 
   EXAMPLES:
     Update bwUniCluster2
@@ -97,6 +99,9 @@ EOF
 case "${1}" in
   -h | --help)
     help_menu
+  ;;
+  -p | --prod)
+    create_prod_files
   ;;
   *)
     update

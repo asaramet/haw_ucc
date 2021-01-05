@@ -11,10 +11,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "public/aot",
+            "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "tsConfig": "tsconfig-prod-aot.json",
             "assets": [
               "src/assets",
               "src/favicon.ico"
@@ -29,15 +29,11 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "fileReplacements": [
-                {}
-              ]
+              "vendorChunk": true,
+              "buildOptimizer": true
             }
           }
         },

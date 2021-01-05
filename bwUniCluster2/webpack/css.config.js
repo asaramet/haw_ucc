@@ -4,15 +4,13 @@ const nodePath = path.resolve(__dirname, '../node_modules');
 const srcPath = path.resolve(__dirname, '../src');
 const configPath = path.resolve(__dirname, '../webpack');
 
-const CompressionPlugin = require('compression-webpack-plugin');
-
 //console.log("srcPath: ", srcPath);
 
 module.exports = {
   mode: 'production',
   entry: ['./aot_files/styles.scss'],
   output: {
-    path: path.resolve(__dirname, '../public/css')
+    path: path.resolve(__dirname, '../src'),
     //filename: 'styles.css'
   },
   module : {
@@ -34,14 +32,5 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new CompressionPlugin({
-      test: /\.css$/,
-      exclude: [nodePath, srcPath, configPath],
-      filename: '[path].gz[query]',
-      algorithm: 'gzip',
-      threshold: 10240,
-      minRatio: 0.8
-    })
-  ]
+  plugins: []
 };

@@ -10,11 +10,10 @@ commands
 # compiled output
 */public
 */prod_work
-*/src/favicon.ico
-*/src/main.aot.ts
 */aot_files/htppwd/
 */package-lock.json
 */src/assets
+*/src/*.js
 
 # dependencies
 */node_modules

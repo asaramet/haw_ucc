@@ -14,7 +14,7 @@ write_file()
   "extends": "./tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "public/aot",
+    "outDir": "public",
     "importHelpers": true,
     "module": "es2015",
     "noImplicitAny": true,
