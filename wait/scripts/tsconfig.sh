@@ -14,7 +14,7 @@ write_file()
   "extends": "./tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "public/aot",
+    "outDir": "public",
     "importHelpers": true,
     "module": "es2015",
     "noImplicitAny": true,
@@ -32,13 +32,12 @@ EOF
 
   cat << EOF
     "src/app/app.module.ts",
-    "src/main.aot.ts"
+    "src/main.ts"
   ],
 
   "angularCompilerOptions": {
     "skipMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "genDir": "public/aot",
     "entryModule": "src/app/app.module#AppModule"
   }
 }

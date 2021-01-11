@@ -32,7 +32,7 @@ install_npm_packs()
   if [[ ! -d "${MD}/node_modules" ]]; then
     npm install &&
     npm un typescript &&
-    npm i -S typescript@3.5 &&
+    npm i -S typescript@4.0 &&
     npm audit fix
   fi
 }
@@ -46,11 +46,8 @@ create_data_files()
   data_folder="${A_DIR}/_data"
   [[ ! -d ${data_folder} ]] && mkdir -p ${data_folder}
 
-  # build data files for previous year only in January
-  [[ month -gt 1 ]] && declare -i start_year="2020"
-
-  python3 ${S_DIR}/get_data.py -y ${start_year}
-  python3 ${S_DIR}/get_top_data.py -y ${start_year}
+  python3 ${S_DIR}/get_data.py
+  python3 ${S_DIR}/get_top_data.py
 }
 
 create_angular_app()
@@ -70,7 +67,7 @@ update()
   create_data_files
   create_angular_app
   create_prod_files
-  install_npm_packs
+  #install_npm_packs
 }
 
 help_menu () {

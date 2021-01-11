@@ -77,8 +77,13 @@ def read_data(year):
   else:
     start_month = 1
 
-  yesterday = date.today() - timedelta(1)
-  end_month = yesterday.month
+  # set the end month up to which to read data to
+  CURRENT_YEAR = date.today().year
+  if year < CURRENT_YEAR:
+    end_month = 12
+  else:
+    yesterday = date.today() - timedelta(1)
+    end_month = yesterday.month
 
   # init a dictionary to collect lines from all the data files
   sorted_lines = {}

@@ -16,7 +16,7 @@
     "clean": "npm run clean:src && npm run clean:public",
     "clean:app": "rm -rf src/app",
     "build": "npm run clean:src && ng build --prod",
-    "build:css": "webpack --config webpack/css.config.js && rm src/main.js",
+    "build:css": "webpack --config webpack/css.config.js",
     "prod": "npm run build:css && npm run build",
     "compile": "npm run prod && npm run clean:src",
     "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/uni2/all/ --delete-excluded",

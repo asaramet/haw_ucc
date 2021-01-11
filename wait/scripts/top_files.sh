@@ -68,7 +68,7 @@ module()
   cat << EOF
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 
 EOF
 
@@ -181,7 +181,7 @@ module_c()
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleChartsModule } from 'angular-google-charts';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 
 
 import { ${queue^}Component } from './${queue}.component';

@@ -10,10 +10,8 @@ material()
   cat << EOF
 import { NgModule } from '@angular/core';
 
-import {
-  MatButtonModule,
-  MatTabsModule,
-} from '@angular/material';
+import { MatTabsModule, } from '@angular/material/tabs';
+import { MatButtonModule, } from '@angular/material/button';
 
 @NgModule({
   exports: [
