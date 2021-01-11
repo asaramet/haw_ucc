@@ -16,7 +16,7 @@ EOF
 
 create_data_files()
 {
-  #${S_DIR}/collect_data.sh
+  ${S_DIR}/collect_data.sh
 
   DATA_FOLDER="${A_DIR}/_data"
   [[ ! -d ${DATA_FOLDER} ]] && mkdir -p ${DATA_FOLDER}
