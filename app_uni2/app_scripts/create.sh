@@ -65,7 +65,8 @@ write_main_component()
 
   cat << EOF
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { DataObject, SortedUniUsers } from '../../_helpers/users.methods';
 import { monthsDict } from '../../_helpers/add_data';
@@ -127,7 +128,7 @@ write_router_module()
   cat > ${module_file} << EOF
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleChartsModule } from 'angular-google-charts';
@@ -256,7 +257,8 @@ write_haw_component()
 
   cat << EOF
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { DataObject } from '../../../_helpers/users.methods';
 import { uniPrefixes } from '../../../_helpers/uni_prefixes';
