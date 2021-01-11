@@ -55,7 +55,6 @@ write_main_component()
   declare -i year=${1}
 
   last_month="12"
-  echo `date -d 'yesterday' '+%m'`
   [[ ${year} -eq ${END_YEAR} ]] && last_month=`date -d 'yesterday' '+%m'`
 
   last_month="${last_month#'0'}" # remove '0' prefix

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 MD=`dirname $(readlink -f $0)`
-prefixes='aa as es hf hk hn hr hs ht hu ro'
+prefixes='aa as es hk hn hr hs ht hu mn of ro'
 host="comserver.hs-esslingen.de"
 
 check_prefix()
@@ -62,7 +62,8 @@ sync()
 {
   haw_prefix=${1}
   chmod g=u public -R
-  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
+  #rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
+  rsync -uavhr public/ /www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
 }
 
 
