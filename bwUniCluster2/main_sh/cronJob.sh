@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATH=$PATH:$HOME/WORK/node-v14.4.0-linux-x64/bin
+PATH=$PATH:$HOME/WORK/node-v14.15.4-linux-x64/bin
 MD="$HOME/WORK/haw_ucc"
 UPDATE_FILE="$HOME/WORK/update.log"
 
