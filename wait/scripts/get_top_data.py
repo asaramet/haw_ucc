@@ -61,7 +61,7 @@ def convert(line, users=[]):
   if users == []: return -1
 
   data = line.split()
-  if data[-1] == "Unknown" or data[6] == "Unknown":
+  if data[-1] == "Unknown" or data[6] == "Unknown" or data[7] == "Unknown":
     return -1
 
   user = data[2]

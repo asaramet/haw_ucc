@@ -43,7 +43,7 @@ def main(argv):
 # convert data line to ts list
 def convert(line):
   data = line.split()
-  if data[-1] == "Unknown" or data[6] == "Unknown":
+  if data[-1] == "Unknown" or data[6] == "Unknown" or data[7] == "Unknown":
     return -1
   start = datetime.fromisoformat(data[6])
   submit = datetime.fromisoformat(data[-1])
