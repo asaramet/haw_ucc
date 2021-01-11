@@ -6,12 +6,21 @@ MD="`dirname $(readlink -f ${0})`/.."
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sacct_logs"
 OUT_FOLDER="${MD}/src/app/_data"
 
-PREFIXES='aa as es hf hk hn hr hs ht hu ro'
-
 MONTH=`date -d 'yesterday' '+%m'` # doing from the 2-nd of every month
 MONTH="${MONTH#'0'}" # remove '0' prefix
 
 declare -i YEAR=`date -d 'yesterday' '+%Y'`
+
+set_prefixes()
+{
+  year=${1}
+  # prefixes to collect data into sacct_logs
+  if [[ ${year} -eq "2020" ]]; then
+    PREFIXES='aa as es hf hk hn hr hs ht hu ro'
+  else
+    PREFIXES='aa as es hk hn hr hs ht hu mn of ro'
+  fi
+}
 
 collect_data ()
 {
@@ -19,6 +28,8 @@ collect_data ()
   month=${2}
 
   data_file="${DATA_FOLDER}/${year}-${month}.log"
+
+  set_prefixes ${year}
 
   declare -i total="0"
   for prefix in ${PREFIXES}; do
@@ -57,6 +68,10 @@ write_body_montly()
 write_body_total()
 {
   data_file=${1}
+  year=${2}
+
+  set_prefixes ${year}
+
   for prefix in ${PREFIXES}; do
     declare -i cost="0"
     while read -r line; do
@@ -94,7 +109,7 @@ write_ts ()
   done
 
   echo "export const uca_${year}_total = ["
-  write_body_total ${TEMP_FILE2}
+  write_body_total ${TEMP_FILE2} ${year}
   echo "];"
 
   rm -f ${TEMP_FILE} ${TEMP_FILE2}

@@ -8,7 +8,7 @@ OUT_FOLDER = os.path.join(MD, "src/app/_data")
 DATA_FOLDER = "/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sacct_logs"
 TEMP_FILE = os.path.join(DATA_FOLDER, "temp.txt")
 
-PREFIXES = ['aa', 'as', 'es', 'hf', 'hk', 'hn', 'hr', 'hs', 'ht', 'hu', 'ro']
+PREFIXES = ['aa', 'as', 'es', 'hk', 'hn', 'hr', 'hs', 'ht', 'hu', 'mn', 'of', 'ro']
 
 def main(argv):
   usage_msg = 'Usage: ' + argv[0] + ' -y <year> -m <last month>'
@@ -28,6 +28,10 @@ def main(argv):
   if year == 0 or month == 0:
     print('Missing year or month.', usage_msg)
     sys.exit(2)
+
+  # modify prefixes for 2020
+  if year == 2020:
+    PREFIXES = ['aa', 'as', 'es', 'hf', 'hk', 'hn', 'hr', 'hs', 'ht', 'hu', 'ro']
 
   write_ts(year, month)
 
