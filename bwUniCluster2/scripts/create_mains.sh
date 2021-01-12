@@ -73,8 +73,10 @@ EOF
 
   while [[ ${start} -le ${end} ]]; do
     cat << EOF
-  { path: '${start}', loadChildren: './${start}/${start}.module#Year${start}Module' },
-  { path: 'users/${start}', loadChildren: './users/${start}/${start}.module#Users${start}Module' },
+  //{ path: '${start}', loadChildren: './${start}/${start}.module#Year${start}Module' },
+  //{ path: 'users/${start}', loadChildren: './users/${start}/${start}.module#Users${start}Module' },
+  { path: '${start}', loadChildren: () => import('./${start}/${start}.module').then(m => m.Year${start}Module)},
+  { path: 'users/${start}', loadChildren: () => import('./users/${start}/${start}.module').then(m => m.Users${start}Module) },
 EOF
     start=$(( ${start} + 1 ))
   done

@@ -120,8 +120,10 @@ const routes: Routes = [
 EOF
 
   while [[ ${start_year} -le ${year} ]]; do
-    echo "  { path: '${start_year}', loadChildren: './${start_year}/${start_year}.module#Year${start_year}Module' },"
-    echo "  { path: 'top/${start_year}', loadChildren: './top/${start_year}/${start_year}.module#Top${start_year}Module' },"
+    echo "  //{ path: '${start_year}', loadChildren: './${start_year}/${start_year}.module#Year${start_year}Module' },"
+    echo "  //{ path: 'top/${start_year}', loadChildren: './top/${start_year}/${start_year}.module#Top${start_year}Module' },"
+    echo "  { path: '${start_year}', loadChildren: () => import('./${start_year}/${start_year}.module').then(m => m.Year${start_year}Module) },"
+    echo "  { path: 'top/${start_year}', loadChildren: () => import('./top/${start_year}/${start_year}.module').then(m => m.Top${start_year}Module) },"
     start_year=$(( ${start_year} + 1 ))
   done
 

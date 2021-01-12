@@ -62,7 +62,7 @@ install_npm_packs()
   if [[ ! -d node_modules ]]; then
     npm install &&
     npm un typescript &&
-    npm i -S typescript@3.5 &&
+    npm i -S typescript@4.0 &&
     npm audit fix
   fi
 }
@@ -77,7 +77,7 @@ update()
   create_main_app
   create_users_folder
   create_prod_files
-  install_npm_packs
+  #install_npm_packs
 }
 
 help_menu () {

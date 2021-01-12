@@ -16,7 +16,7 @@ write_file()
   "compilerOptions": {
     "outDir": "public",
     "importHelpers": true,
-    "module": "es2015",
+    "module": "es2020",
     "noImplicitAny": true,
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
