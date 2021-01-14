@@ -11,16 +11,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies":[
+              "lodash"
+            ],
             "outputPath": "public",
             "index": "src/index.html",
             "main": "src/main.ts",
             "tsConfig": "tsconfig-prod-aot.json",
             "assets": [
               "src/assets",
-              "src/favicon.ico"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },

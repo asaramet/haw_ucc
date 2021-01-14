@@ -64,6 +64,7 @@ update()
   [[ -d ${A_DIR} ]] && rm -rf ${A_DIR}
   mkdir -p ${A_DIR}
 
+  # run update functions
   create_data_files
   create_angular_app
   create_prod_files

@@ -18,10 +18,8 @@
     "make:new": "npm run clean:all && npm run copy:new",
     "make": "npm run clean:all && npm run copy:new && npm run clean:app",
     "build": "npm run clean:src && ng build --prod",
-    "build:css": "webpack --config webpack/css.config.js && rm src/main.js",
     "create:new": "./app_scripts/create.sh -b",
-    "prod": "npm run build:css && npm run build",
-    "compile": "npm run prod && npm run clean:src",
+    "compile": "npm run build && npm run clean:src",
     "watch": "ng serve --watch",
     "update": "./app_scripts/update.sh"
   },

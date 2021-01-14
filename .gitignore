@@ -29,9 +29,6 @@ npm-debug.log
 */.DS_Store
 */Thumbs.db
 
-# AOT files
-*/src/styles.css
-
 app_uni*/src
 
 # Data files
