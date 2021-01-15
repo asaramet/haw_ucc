@@ -12,9 +12,9 @@ def tsconfig(year):
   "extends": "./tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "public/aot",
+    "outDir": "public",
     "importHelpers": true,
-    "module": "es2015",
+    "module": "es2020",
     "noImplicitAny": true,
     "removeComments": true,
     "suppressImplicitAnyIndexErrors": true,
@@ -30,13 +30,12 @@ def tsconfig(year):
 
   text += '''
     "src/app/app.module.ts",
-    "src/main.aot.ts"
+    "src/main.ts"
   ],
 
   "angularCompilerOptions": {
     "skipMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "genDir": "public/aot",
     "entryModule": "src/app/app.module#AppModule"
   }
 }'''

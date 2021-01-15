@@ -38,7 +38,7 @@ def module(year, begin=1, end=12):
   text = '''
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { Year${year}Component } from './${year}.component';
 import { Year${year}RouterModule } from './${year}.router';
 import { UnisModule } from '../unis/unis.module';

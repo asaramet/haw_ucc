@@ -9,7 +9,7 @@ declare -i year=2017
 generate () {
   copy_unis_components
   copy_helpers
-  python3 ${MD}/create_app_components.py -y `date +%Y`
+  python3 ${MD}/create_app_components.py -y "2020"
 }
 
 copy_unis_components () {

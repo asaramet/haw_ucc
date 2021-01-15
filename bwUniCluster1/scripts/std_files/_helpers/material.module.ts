@@ -1,11 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import {
-  //MatIconModule,
-  MatButtonModule,
-  MatTabsModule,
-  MatCardModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatTabsModule } from '@angular/material/tabs';
 
 /**
 * NgModules that includes all Material modules that are required to serve the app

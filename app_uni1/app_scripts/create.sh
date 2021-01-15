@@ -13,8 +13,8 @@ create () {
   prefix=${1}
   year=${2}
 
-  declare -i currentYear=`date +%Y`
-  currentMonth=`date +%m`
+  declare -i currentYear="2020"
+  currentMonth="12"
   currentMonth="${currentMonth#'0'}" # remove '0' prefix
 
   [[ ${currentYear} -gt "2020" ]] && declare -i currentYear="2020"
@@ -43,7 +43,7 @@ help_menu () {
     Create components for es, 2018:
       $ ${0} es 2018
 
-    Create components for aa from 2017 up to $(date +%Y):
+    Create components for aa from 2017 up to 2020:
       $ ${0} all aa
 
     Build a new fresh case:
@@ -63,7 +63,7 @@ case ${1} in
     for prefix in ${possible_prefixes}; do
       if [[ ${2} == ${prefix} ]]; then
         startYear=2017
-        while [[ ${startYear} -le `date +%Y` ]]; do
+        while [[ ${startYear} -le 2020 ]]; do
           create ${prefix} ${startYear}
           startYear=$(( ${startYear} + 1 ))
         done

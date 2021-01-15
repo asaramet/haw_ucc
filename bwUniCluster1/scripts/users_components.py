@@ -94,7 +94,7 @@ def module(year, uni="all"):
   text = '''
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material';
+import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatButtonModule } from '@angular/material/button';
 import { GoogleChartsModule } from 'angular-google-charts';
@@ -140,7 +140,8 @@ def monthsString(year):
 def mainComponent(year):
   text = '''
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { DataObject, YearlyUniUsers } from '../../_helpers/users.methods';
 import * as db from '../../_data/${year}';
@@ -293,7 +294,8 @@ def component(prefix, year, month):
 
   textTempl = Template('''
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { DataObject } from '../../../_helpers/users.methods';
 import { users_chart_opt, months } from '../../../_helpers/add_data';

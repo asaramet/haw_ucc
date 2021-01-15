@@ -45,7 +45,8 @@ def createTS(uniPrefix, year, month, start_month=1):
   dataDictStr += '\n  { month: -1, data: db.udata_' + str(year) + ' }\n];'
   textTempl = Template('''
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatSort, MatTableDataSource } from '@angular/material';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { DataObject, SortedUniUsers } from '../../_helpers/users.methods';
 import { monthsDict } from '../../_helpers/add_data';

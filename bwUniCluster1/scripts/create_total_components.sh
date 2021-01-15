@@ -53,7 +53,7 @@ generate_annual_module () {
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleChartsModule } from 'angular-google-charts';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { AnnualComponent } from './annual.component';
 @NgModule({
   declarations: [ AnnualComponent ],
@@ -161,7 +161,7 @@ generate_total_module () {
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GoogleChartsModule } from 'angular-google-charts';
-import { MatCardModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
 import { TotalComponent } from './total.component';
 @NgModule({
   declarations: [ TotalComponent ],

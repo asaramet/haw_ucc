@@ -6,10 +6,13 @@ S_DIR=${MD}/scripts
 A_DIR=${MD}/src/app
 OUTPUT_DIR="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster1/output"
 
-CURRENT_MONTH=`date +%m`
-[[ ${CURRENT_MONTH:0:1} -eq 0 ]] && CURRENT_MONTH=${CURRENT_MONTH:1:2}
-CURRENT_YEAR=`date +%Y`
-[[ ${CURRENT_YEAR} -eq "2020" ]] && declare -i CURRENT_MONTH="3"
+#CURRENT_MONTH=`date +%m`
+#[[ ${CURRENT_MONTH:0:1} -eq 0 ]] && CURRENT_MONTH=${CURRENT_MONTH:1:2}
+#CURRENT_YEAR=`date +%Y`
+#[[ ${CURRENT_YEAR} -eq "2020" ]] && declare -i CURRENT_MONTH="3"
+
+CURRENT_YEAR="2020"
+declare -i CURRENT_MONTH="3"
 
 collect_data () {
   YEAR=${1}
@@ -97,9 +100,9 @@ update () {
 
   [[ ${CURRENT_YEAR} -gt "2020" ]] && declare -i CURRENT_YEAR="2020" && declare -i CURRENT_MONTH="3"
   while [[ ${fromYear} -lt ${CURRENT_YEAR} ]]; do
-    [[ ! -d ${OUTPUT_DIR}/../${fromYear} ]] ||
-    [[ ! -d ${OUTPUT_DIR}/../haw/${fromYear} ]] &&
-    collect_data ${fromYear}
+    #[[ ! -d ${OUTPUT_DIR}/../${fromYear} ]] ||
+    #[[ ! -d ${OUTPUT_DIR}/../haw/${fromYear} ]] &&
+    #collect_data ${fromYear}
     [[ ! -f ${A_DIR}/_data/${fromYear}.ts ]] ||
     [[ ! -f ${A_DIR}/_data/bwUniData_${fromYear}.ts ]] && gather_data ${fromYear}
     [[ ! -d ${A_DIR}/users/${fromYear} ]] && create_users_components ${fromYear}
@@ -108,7 +111,7 @@ update () {
 
     fromYear=$(( ${fromYear} + 1 ))
   done
-  collect_data ${CURRENT_YEAR}
+  #collect_data ${CURRENT_YEAR}
   gather_data ${CURRENT_YEAR}
   create_users_components ${CURRENT_YEAR}
   create_unis_components ${CURRENT_YEAR} ${CURRENT_MONTH}

@@ -40,7 +40,8 @@ update () {
 
   # sync
   chmod g=u public -R
-  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/_ssl/${1}/ --delete-excluded
+  #rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/_ssl/${1}/ --delete-excluded
+  rsync -uavhr public/ /www/faculty/it/bwHPC/_ssl/${1}/ --delete-excluded
 
   # save
   [[ -d public ]] && [[ -d ./saves/${1} ]] && rm ./saves/${1} -rf && sleep 5 &&
