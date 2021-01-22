@@ -6,7 +6,7 @@ A_DIR=${MD}/src/app
 START_YEAR=${1}
 YEAR=${2}
 
-LABELS="single multiple multiple_e fat dev_single dev_multiple dev_multiple_e dev_special special gpu_4 gpu_8"
+LABELS="single multiple multiple_e fat dev_single dev_multiple dev_multiple_e dev_special special gpu_4 dev_gpu_4 gpu_8"
 
 html()
 {

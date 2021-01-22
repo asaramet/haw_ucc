@@ -9,7 +9,7 @@ DATA_FOLDER = "/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2/sacct_logs"
 
 
 PARTITIONS = ["dev_single", "single", "dev_multiple", "multiple", "fat", "dev_multiple_e",
-  "multiple_e", "dev_special", "special", "gpu_4", "gpu_8"]
+  "multiple_e", "dev_special", "special", "gpu_4", "dev_gpu_4", "gpu_8"]
 
 def main(argv):
   msg = f"Usage: {argv[0]} -y START_YEAR"
