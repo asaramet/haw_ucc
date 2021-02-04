@@ -18,7 +18,7 @@
     "compile": "npm run build && npm run clean:src",
     "save": "test -d public || test -d ./prod_work || rm ./prod_work -rf;  mv public prod_work || echo 'compile first!!!'",
     "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/wait/ --delete-excluded",
-    "rsync": "npm run sync && npm run save",
+    "rsync": "chmod g=u public -R && rsync -uavrh public/ comserver.hs-esslingen.de:/www/faculty/it/bwHPC/wait/ --delete-excluded",
     "update": "scripts/update.sh && npm run compile",
     "update:test": "scripts/update.sh",
     "watch": "ng serve --watch"

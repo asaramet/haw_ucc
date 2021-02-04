@@ -21,7 +21,7 @@
     "watch": "ng serve --watch",
     "update": "scripts/update.sh && npm run compile && scripts/update.sh -p",
     "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/uni2/all/ --delete-excluded",
-    "rsync": "npm run sync && npm run save"
+    "rsync": "chmod g=u public -R && rsync -uavrh public/ comserver.hs-esslingen.de:/www/faculty/it/bwHPC/uni2/all/ --delete-excluded",
   },
   "author": "Alexandru Saramet",
   "license": "ISC",

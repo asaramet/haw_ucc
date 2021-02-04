@@ -62,10 +62,15 @@ sync()
 {
   haw_prefix=${1}
   chmod g=u public -R
-  #rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
   rsync -uavhr public/ /www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
 }
 
+rem_sync()
+{
+  haw_prefix=${1}
+  chmod g=u public -R
+  rsync -uavhr public/ ${host}:/www/faculty/it/bwHPC/uni2/${haw_prefix}/ --delete-excluded
+}
 
 help_menu () {
   cat << EOF
@@ -93,13 +98,13 @@ case ${1} in
     if [[ ! -z ${1} ]]; then
       prefix=${1}
       update ${prefix} &&
-      sync ${prefix} &&
+      rem_sync ${prefix} &&
       clean &&
       exit 0
     fi
     for prefix in ${prefixes}; do
       update ${prefix} &&
-      sync ${prefix} &&
+      rem_sync ${prefix} &&
       clean
     done
 esac
