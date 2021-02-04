@@ -17,10 +17,10 @@
     "clean:app": "rm -rf src/app",
     "build": "npm run clean:src && ng build --prod",
     "compile": "npm run build && npm run clean:src",
-    "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/uni2/all/ --delete-excluded",
     "save": "test -d public || test -d ./prod_work || rm ./prod_work -rf;  mv public prod_work || echo 'compile first!!!'",
     "watch": "ng serve --watch",
     "update": "scripts/update.sh && npm run compile && scripts/update.sh -p",
+    "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/uni2/all/ --delete-excluded",
     "rsync": "npm run sync && npm run save"
   },
   "author": "Alexandru Saramet",

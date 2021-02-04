@@ -14,11 +14,12 @@ declare -i START_YEAR="2020"
 
 [[ ${YEAR} -lt ${START_YEAR} ]] && echo "Wrong argument YEAR: ${YEAR}" && exit 1
 
-# build last year data during January this year
-[[ ${START_YEAR} -lt ${YEAR} ]] && [[ ${END_MONTH} -eq 1 ]] &&
-START_YEAR=$(( ${YEAR} - 1 )) &&
-echo "... Building ${OUT_FOLDER}/${START_YEAR}.ts" &&
-python3 "${MD}/scripts/write_data_year.py" -y ${START_YEAR} -m "12"
+# build previous years data
+while [[ ${START_YEAR} -lt ${YEAR} ]]; do
+  echo "... Building ${OUT_FOLDER}/${START_YEAR}.ts" &&
+  python3 "${MD}/scripts/write_data_year.py" -y ${START_YEAR} -m "12"
+  START_YEAR=$(( START_YEAR + 1 ))
+done
 
 echo "... Building ${OUT_FOLDER}/${YEAR}.ts"
 python3 "${MD}/scripts/write_data_year.py" -y ${YEAR} -m ${END_MONTH}
