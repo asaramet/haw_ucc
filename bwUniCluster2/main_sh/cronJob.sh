@@ -11,7 +11,7 @@ update_main()
   npm run update 1>>${UPDATE_FILE} 2>&1 &&
 
   echo -e "\n=== sync angular" >> ${UPDATE_FILE} &&
-  npm run rsync 1>>${UPDATE_FILE} 2>&1
+  npm run sync 1>>${UPDATE_FILE} 2>&1
 }
 
 update_haws()
@@ -28,7 +28,7 @@ update_wait()
   npm run update 1>>${UPDATE_FILE} 2>&1 &&
 
   echo -e "\n=== rsync angular" >> ${UPDATE_FILE} &&
-  npm run rsync 1>>${UPDATE_FILE} 2>&1
+  npm run sync 1>>${UPDATE_FILE} 2>&1
 }
 
 set_env()

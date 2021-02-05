@@ -98,13 +98,15 @@ case ${1} in
     if [[ ! -z ${1} ]]; then
       prefix=${1}
       update ${prefix} &&
-      rem_sync ${prefix} &&
+      #rem_sync ${prefix} &&
+      sync ${prefix} &&
       clean &&
       exit 0
     fi
     for prefix in ${prefixes}; do
       update ${prefix} &&
-      rem_sync ${prefix} &&
+      #rem_sync ${prefix} &&
+      sync ${prefix} &&
       clean
     done
 esac
