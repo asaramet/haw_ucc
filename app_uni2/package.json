@@ -21,6 +21,7 @@
     "create:new": "./app_scripts/create.sh -b",
     "compile": "npm run build && npm run clean:src",
     "watch": "ng serve --watch",
+    "test": "./app_scripts/update.sh -t",
     "update": "./app_scripts/update.sh"
   },
   "author": "Alexandru Saramet",

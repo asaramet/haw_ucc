@@ -77,7 +77,8 @@ help_menu () {
   Usage ${0} [OPTIONS] [UNI PREFIX]
 
   OPTIONS:
-    help       Show this message
+    -h | --help       Show this message
+    -t | --test       Build a local app for es    
 
   EXAMPLES:
     Create components for hu:
@@ -92,6 +93,9 @@ EOF
 case ${1} in
   -h | --help)
     help_menu
+  ;;
+  -t | --test)
+    update 'es'
   ;;
   *)
     check_prefix ${1}

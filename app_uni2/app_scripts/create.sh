@@ -177,12 +177,12 @@ EOF
   for comp in ${components}; do
     echo -e "    ${comp}," >> ${module_file}
 
-    month=${comp%Component}
-    month=${month:6}
+    mnth="${comp%Component}"
+    mnth=${mnth:6}
 
     for combo in ${MONTHS}; do
       IFS=":" read -ra ADDR <<< ${combo}
-      [[ ${ADDR[0]} -eq ${month} ]] &&
+      [[ ${ADDR[0]} -eq ${mnth} ]] &&
       echo -e "  { path: '${PREFIX}/${ADDR[1]}', component: ${comp}}," >> ${router_file}
     done
   done
