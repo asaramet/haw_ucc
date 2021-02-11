@@ -79,6 +79,7 @@ help_menu () {
 
   OPTIONS:
     -h | --help         Show this message
+    -p | --prod         Create production files
 
   EXAMPLES:
     Update wait
@@ -89,6 +90,9 @@ EOF
 case "${1}" in
   -h | --help)
     help_menu
+  ;;
+  -p | --prod)
+    create_prod_files
   ;;
   *)
     update
