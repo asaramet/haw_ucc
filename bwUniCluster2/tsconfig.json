@@ -1,5 +1,8 @@
 {
   "compileOnSave": false,
+  "include": [
+    "src"
+  ],
   "compilerOptions": {
     "sourceMap": false,
     "declaration": false,
