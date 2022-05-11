@@ -2,8 +2,8 @@
 
 DATA_FOLDER="/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2"
 #SERVER_FOLDER="es_asaramet@bwunicluster.scc.kit.edu:/opt/bwhpc/es/dbdata"
-SERVER_FOLDER="asaramet@grid01.hs-esslingen.de:/opt/openfoam/bwUniData"
-#SERVER_FOLDER="asaramet@comserver.hs-esslingen.de:/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2"
+#SERVER_FOLDER="asaramet@grid01.hs-esslingen.de:/opt/openfoam/bwUniData"
+SERVER_FOLDER="asaramet@comserver.hs-esslingen.de:/www/faculty/it/bwHPC/SCRIPTS/bwUniCluster2"
 
 sync()
 {

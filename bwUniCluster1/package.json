@@ -14,7 +14,7 @@
     "clean:public": "rm -rf public/*",
     "clean": "npm run clean:src && npm run clean:public",
     "clean:app": "rm -rf src/app",
-    "build": "npm run clean && ng build --prod",
+    "build": "npm run clean:src && ng build --configuration production",
     "compile": "test -d public || mkdir public; npm run build && npm run clean:src",
     "sync": "chmod g=u public -R && rsync -uavrh public/ /www/faculty/it/bwHPC/_ssl/all/ --delete-excluded",
     "save": "test -d public || test -d ./prod_work || rm ./prod_work -rf;  mv public prod_work || echo 'compile first!!!'",

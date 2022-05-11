@@ -17,7 +17,7 @@
     "copy:app": "rsync -uavh --delete-excluded ../bwUniCluster2/src/app/* src/app/",
     "make:new": "npm run clean:all && npm run copy:new",
     "make": "npm run clean:all && npm run copy:new && npm run clean:app",
-    "build": "npm run clean:src && ng build --prod",
+    "build": "npm run clean:src && ng build --configuration production",
     "create:new": "./app_scripts/create.sh -b",
     "compile": "npm run build && npm run clean:src",
     "watch": "ng serve --watch",
