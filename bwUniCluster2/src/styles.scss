@@ -15,7 +15,7 @@ $card-padding: 10px;
 }
 
 // Changes to angular material
-@import '~@angular/material/theming'; // import theming functions
+@import '@angular/material/theming'; // import theming functions
 
 // Define custom typography config that overrides the font-family etc
 $general-typography: mat-typography-config(
