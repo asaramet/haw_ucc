@@ -17,6 +17,7 @@ commands
 
 # dependencies
 */node_modules
+*/.angular
 
 # IDEs and editors
 */.sass-lint.yml
