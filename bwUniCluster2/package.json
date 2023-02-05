@@ -24,22 +24,5 @@
     "rsync": "chmod g=u public -R && rsync -uavrh public/ comserver.hs-esslingen.de:/www/faculty/it/bwHPC/uni2/all/ --delete-excluded"
   },
   "author": "Alexandru Saramet",
-  "license": "ISC",
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^14.2.10",
-    "@angular/animations": "^14.2.12",
-    "@angular/cdk": "^14.2.7",
-    "@angular/cli": "^14.2.10",
-    "@angular/common": "^14.2.12",
-    "@angular/compiler": "^14.2.12",
-    "@angular/compiler-cli": "^14.2.12",
-    "@angular/core": "^14.2.12",
-    "@angular/forms": "^14.2.12",
-    "@angular/material": "^14.2.7",
-    "@angular/platform-browser": "^14.2.12",
-    "@angular/platform-browser-dynamic": "^14.2.12",
-    "@angular/router": "^14.2.12",
-    "angular-google-charts": "^2.2.3",
-    "zone.js": "^0.12.0"
-  }
+  "license": "ISC"
 }
